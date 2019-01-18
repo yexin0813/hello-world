@@ -1,0 +1,22 @@
+ build/default/production/src/mcc.d  \
+ build/default/production/src/mcc.p1:  \
+ src/mcc.c  \
+../../../../../Microchip/xc8/v2.00/pic/include/language_support.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/pic.h  \
+src/../inc/mpu_iic.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/xc.h  \
+src/../inc/gpio.h  \
+src/../inc/mcc.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/eeprom_routines.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/c90/stdint.h  \
+src/../inc/../inc/filter.h  \
+src/../inc/tmr0.h  \
+src/../inc/adc.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/__at.h  \
+src/../inc/interrupt_manager.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/htc.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/pic_chip_select.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/c90/xc8debug.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/pic16f15354.h  \
+../../../../../Microchip/xc8/v2.00/pic/include/c90/stdbool.h  \
+src/../inc/eusart.h 
