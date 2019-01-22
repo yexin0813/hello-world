@@ -55,6 +55,7 @@ uint8_t  gu8OperationState = NO_OPERATION;
 extern uint16_t gu16RstTimCnt;
 extern uint16_t gu16OpenTimCnt;
 extern uint16_t gu16OpenTimCnt;
+extern uint8_t gu8UartTicnt;
 
 
 
@@ -75,11 +76,17 @@ void main(void)
                  //sleep
                 if(gu8OperationState == NO_OPERATION)
                 {
+                    TMR0_StopTimer();
+                    /*
                     EUSART_Write(0x22); 
                     EUSART_Write(0x33); 
-                    TMR0_StopTimer();
+                    PowerDown_Mpu6500();
+                    
+                    VREGCON |= 0x02;
+                    __delay_ms(10);
+                    
                     EUSART_Enable_WakeUp();
-                    SLEEP();
+                    SLEEP();*/
                 }
                 gu8OldDoorState = DOOR_COLSE;
                 gu8DoorState = DOOR_WAIT_OPERATON;
@@ -156,6 +163,29 @@ void main(void)
                         gu8OldDoorState = DOOR_OPEN;
                         gu8DoorState = DOOR_OPEN;
                         gu8OperationState &= 0xFC;
+                    }
+                }
+                if(gu8OperationState&UART_FRAME_REV)//uart 接收到数据
+                {
+                    if(EUSART_Read())
+                    {
+                         UART_Task();
+                         Clear_FrameDone();
+                         gu8UartTicnt = 0;
+                         EUSART_Write(0x22); 
+                         EUSART_Write(0x99); 
+                         gu8OperationState &=~UART_FRAME_REV;
+                    }
+                    else
+                    {
+                        if(gu8UartTicnt >= 10)
+                        {
+                            gu8UartTicnt = 0;
+                            Clear_FrameDone();
+                            //EUSART_Write(0x22); 
+                           // EUSART_Write(0xAA);
+                            gu8OperationState &=~UART_FRAME_REV;
+                        }
                     }
                 }
                 if(gu8OperationState == NO_OPERATION)

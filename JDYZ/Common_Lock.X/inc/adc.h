@@ -287,6 +287,7 @@ adc_result_t ADC_GetConversionResult(void);
     </code>
 */
 adc_result_t ADC_GetConversion(adc_channel_t channel);
+uint8_t ADC_Get_Vol(void);
 
 
 #ifdef __cplusplus  // Provide C++ Compatibility

@@ -58,6 +58,7 @@ extern uint8_t  gu8OperationState;
 extern uint8_t  gu8DoorState;
 uint16_t gu16RstTimCnt = 0;
 uint16_t gu16OpenTimCnt = 0;
+uint8_t gu8UartTicnt = 0;
 
 
 /**
@@ -93,7 +94,10 @@ void TMR0_Initialize(void)
 void TMR0_StartTimer(void)
 {
     // Start the Timer by writing to TMR0ON bit
-    T0CON0bits.T0EN = 1;
+    if(T0CON0bits.T0EN == 0)
+    {
+        T0CON0bits.T0EN = 1;
+    }
 }
 
 void TMR0_StopTimer(void)
@@ -138,6 +142,10 @@ void TMR0_ISR(void)
     {
         gu16OpenTimCnt++; 
         TMR0_Task();
+    }
+    if(gu8OperationState&UART_FRAME_REV)
+    {
+        gu8UartTicnt++;
     }
 
     // add your TMR0 interrupt custom code

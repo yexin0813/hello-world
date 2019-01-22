@@ -3,26 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/inc/filter.h</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/inc/mpu_iic.h</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/motor.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/interrupt_manager.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/nbproject/Makefile-impl.mk</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/mpu_iic.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/buzzer.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/adc.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/main.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/inc/gpio.h</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/eusart.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/filter.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/gpio.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/inc/mcc.h</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/inc/motor.h</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/inc/interrupt_manager.h</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/inc/tmr0.h</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/nbproject/Makefile-default.mk</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/mcc.c</file>
-            <file>file:/E:/Project/Cypress/V2/JDYZ/Common_Lock.X/src/tmr0.c</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/src/mpu_iic.c</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/inc/interrupt_manager.h</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/src/tmr0.c</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/src/filter.c</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/inc/eusart.h</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/src/eusart.c</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/src/interrupt_manager.c</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/main.c</file>
+            <file>file:/F:/repository_git/JDYZ/Common_Lock.X/src/mcc.c</file>
         </group>
     </open-files>
 </project-private>

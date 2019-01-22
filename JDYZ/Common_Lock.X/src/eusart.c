@@ -47,6 +47,7 @@
   Section: Included Files
 */
 #include "../inc/eusart.h"
+#include "../inc/adc.h"
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -54,7 +55,17 @@
   Section: Macro Declarations
 */
 #define EUSART_TX_BUFFER_SIZE 8
-#define EUSART_RX_BUFFER_SIZE 8
+#define EUSART_RX_BUFFER_SIZE 20
+#define EUSART_RX_TEMP_BUFFER_SIZE 20
+#define COMMON_LOCK_CMD_FRAME_LENGTH 5
+
+
+#define UART_FRAME_HEAD   0xF5
+#define UART_FRAME_TAIL   0x5F
+
+//uart frame cmd
+#define UART_OPENDOOR 0x01
+#define UART_GET_V    0x02
 
 /**
   Section: Global Variables
@@ -69,6 +80,12 @@ static uint8_t eusartRxHead = 0;
 static uint8_t eusartRxTail = 0;
 static uint8_t eusartRxBuffer[EUSART_RX_BUFFER_SIZE];
 volatile uint8_t eusartRxCount;
+
+static uint8_t eusartTempRxBuffer[EUSART_RX_TEMP_BUFFER_SIZE];
+volatile uint8_t eusartTempRxCount;
+static uint8_t eusartTempRxTail = 0;
+
+static uint8_t eusartFrameDone = 0;
 
 /**
   Section: EUSART APIs
@@ -106,6 +123,7 @@ void EUSART_Initialize(void)
     eusartRxHead = 0;
     eusartRxTail = 0;
     eusartRxCount = 0;
+    eusartTempRxCount = 0;
 
     // enable receive interrupt
     PIE3bits.RC1IE = 1;
@@ -119,26 +137,49 @@ void EUSART_Enable_WakeUp(void)
 
 uint8_t EUSART_Read(void)
 {
-    uint8_t readValue  = 0;
-
-
+    uint8_t bitChk;
     //RC1STAbits.SREN = 1;
-
-    while(0 == eusartRxCount)
+    if(eusartRxCount)
     {
+        PIE3bits.RC1IE = 0;
+        if((eusartTempRxCount == 0)&&(eusartRxBuffer[eusartRxTail]== UART_FRAME_HEAD))
+        {
+            eusartTempRxBuffer[eusartTempRxCount++] = eusartRxBuffer[eusartRxTail];
+        }
+        else if((eusartTempRxCount > 0) && (eusartTempRxCount < (COMMON_LOCK_CMD_FRAME_LENGTH - 1)))        // receive cmd data. 7
+        {
+             eusartTempRxBuffer[eusartTempRxCount++] = eusartRxBuffer[eusartRxTail];
+        }
+         else if(eusartTempRxCount == (COMMON_LOCK_CMD_FRAME_LENGTH - 1))   // one frame done.
+        {
+             if(eusartRxBuffer[eusartRxTail] == UART_FRAME_TAIL)
+             {
+                    // checke frame.
+                    eusartTempRxBuffer[eusartTempRxCount++] = eusartRxBuffer[eusartRxTail];
+                    bitChk = eusartTempRxBuffer[0] ^ eusartTempRxBuffer[1] ^ eusartTempRxBuffer[2];
+
+                    if(eusartTempRxBuffer[3] == bitChk)
+                    {
+                        eusartFrameDone = 1;
+                        //timeOut   = 0;
+                    }
+             }
+             eusartTempRxCount   = 0;
+        }
+
+        eusartRxTail++;
+        if(sizeof(eusartRxBuffer) <= eusartRxTail)
+        {
+            eusartRxTail = 0;
+        }
+        eusartRxCount--;
+        PIE3bits.RC1IE = 1;
     }
-
-    PIE3bits.RC1IE = 0;
-
-    readValue = eusartRxBuffer[eusartRxTail++];
-    if(sizeof(eusartRxBuffer) <= eusartRxTail)
+    if(eusartFrameDone == 1)
     {
-        eusartRxTail = 0;
+        return 1;
     }
-    eusartRxCount--;
-    PIE3bits.RC1IE = 1;
-
-    return readValue;
+    return 0;
 }
 
 void EUSART_Write(uint8_t txData)
@@ -167,6 +208,59 @@ void EUSART_Write(uint8_t txData)
     }
     //PIE3bits.TX1IE = 1;
 }
+
+void EUSART_Write_Frame(uint8_t cmd)
+{
+    uint8_t u8cnt;
+    eusartTxBuffer[0] = UART_FRAME_HEAD;
+    switch(cmd)
+    {
+        case UART_OPENDOOR:
+            eusartTxBuffer[1] = UART_OPENDOOR;
+            eusartTxBuffer[2] = 0x00;
+            break;
+        case UART_GET_V:
+            eusartTxBuffer[1] = UART_GET_V;
+            eusartTxBuffer[2] = ADC_Get_Vol();
+            break;
+        default:
+            break;
+    }
+    eusartTxBuffer[3] = eusartTxBuffer[0] ^ eusartTxBuffer[1] ^ eusartTxBuffer[2];
+    eusartTxBuffer[4] = UART_FRAME_TAIL;
+    for(u8cnt = 0; u8cnt< COMMON_LOCK_CMD_FRAME_LENGTH;u8cnt++)
+    {
+        EUSART_Write(eusartTxBuffer[u8cnt]);
+    }
+    return;
+}
+void UART_Task(void)
+{
+    switch(eusartTempRxBuffer[1])
+    {
+        case UART_OPENDOOR:
+            //open the dool
+            EUSART_Write_Frame(UART_OPENDOOR);
+            break;
+        case UART_GET_V:
+            EUSART_Write_Frame(UART_GET_V);
+            break;
+        default:
+            break;
+                    
+        
+    }
+    
+    
+}
+
+void Clear_FrameDone(void)
+{
+    eusartFrameDone = 0;
+    eusartTempRxCount   = 0;
+}
+
+
 
 void EUSART_Transmit_ISR(void)
 {

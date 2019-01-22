@@ -75,6 +75,8 @@ void Init_MPU6500(void);
 void Test_MPU_6500(void);
 float Mpu6500GyroAngle(int8_t dir);
 int8_t Test_Sleep_Mpu6500(void);
+void PowerDown_Mpu6500(void);
+void WakeUp_Mpu6500(void);
 
 #endif
 

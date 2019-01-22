@@ -79,7 +79,7 @@ void ADC_Initialize(void)
     
     // ADRESH 0; 
     ADRESH = 0x00;
-    //FVR
+    //FVR 2.048v
     FVRCON |= 0x8A;
     
 }
@@ -133,7 +133,26 @@ adc_result_t ADC_GetConversion(adc_channel_t channel)
 
 }
 
-void ADC_Test(void)
+
+uint8_t ADC_Get_Vol(void)
+{
+    adc_result_t adcdata,voldata;
+    uint8_t vol;
+    //uint32_t vol;
+    adcdata = ADC_GetConversion(channel_FVR_BUF2);//2.048V
+    //EUSART_Write(adcdata >>8);  
+    //EUSART_Write(adcdata);  
+    voldata = ADC_GetConversion(0x08);
+    vol = voldata*205/adcdata;
+    //vol /= adcdata;
+    //fvol = (voldata/adcdata)*2.048;
+    //EUSART_Write(adcdata >>8);  
+    //EUSART_Write(adcdata); 
+    return vol;
+    
+}
+
+uint8_t ADC_Test(void)
 {
     adc_result_t adcdata;
     adcdata = ADC_GetConversion(channel_FVR_BUF2);

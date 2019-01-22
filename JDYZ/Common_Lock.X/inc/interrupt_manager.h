@@ -126,6 +126,8 @@ void interrupt INTERRUPT_InterruptManager(void);
 #define SYSY_NOREST 0x00
 #define ONE_KEY_CLOSE 0x08
 #define ONE_KEY_NOCLOSE 0x00
+#define UART_FRAME_REV    0x10
+#define UART_NO_FRAME_REV 0x00
 
 
 

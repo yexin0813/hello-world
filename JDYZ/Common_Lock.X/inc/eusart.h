@@ -221,6 +221,8 @@ void EUSART_Transmit_ISR(void);
 void EUSART_Receive_ISR(void);
 
 void EUSART_Enable_WakeUp(void);
+void Clear_FrameDone(void);
+void UART_Task(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

@@ -53,6 +53,7 @@
  extern uint8_t  gu8DoorState;
  extern uint8_t  gu8OperationState;
  extern uint16_t gu16RstTimCnt;
+ extern uint8_t  gu8UartTicnt;
 
 void interrupt INTERRUPT_InterruptManager (void)
 {
@@ -63,7 +64,10 @@ void interrupt INTERRUPT_InterruptManager (void)
     }
     if(PIE3bits.RC1IE == 1 && PIR3bits.RC1IF == 1)
     {
+        gu8OperationState |= UART_FRAME_REV;
+        gu8UartTicnt = 0;
         EUSART_Receive_ISR();
+        TMR0_StartTimer();  //cal time
     }
     if(PIE0bits.TMR0IE == 1 && PIR0bits.TMR0IF == 1)
     {

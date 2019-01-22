@@ -55,26 +55,27 @@ void PIN_MANAGER_Initialize(void)
     LATA = 0x00;    
     LATB = 0x00;    
     LATC = 0x00;    
-
     /**
     TRISx registers
     */    
-    // RA0 RA1   motor1 output  
-    TRISA = 0xFC;
+    // RA0~RA7   motor1 output  
+    TRISA = 0x00;
     //RB0 RB1 RB2 RB5 input,RB3 RB4 output
-    TRISB = 0xE7;
-    //RC0 input,RC3 IIC clk ,RC4 IIC DATA,RC6 Tx output,RC7 Rx input
-    TRISC = 0xA7;
+    TRISB = 0x27;
+    //RC0 input,RC1 RC2 output,RC3 IIC clk ,RC4 IIC DATA,RC6 Tx output,RC7 Rx input
+    TRISC = 0xA1;
+    
+    TRISE = 0x00;
 
     /**
     ANSELx registers
     */   
-    //RA0 RA1 digital
-    ANSELA = 0xFC;
+    //RA0~ RA7 digital
+    ANSELA = 0x00;
     //RB1 RB2 RB3 RB4 RB5 digital ,Rb0 Analog
-    ANSELB = 0xC1;
-    //RC0  RC3 RC4 RC5 RC6 RC7 digital ,
-    ANSELC = 0x06;
+    ANSELB = 0x01;
+    //RC0 RC1 RC2  RC3 RC4 RC5 RC6 RC7 digital ,
+    ANSELC = 0x00;
 
     /**
     WPUx registers
@@ -99,6 +100,9 @@ void PIN_MANAGER_Initialize(void)
     RC6PPS = 0x0F;
     //RC2 output H
     PORTC |= 0x04;
+    
+   //RB3 output H VCC GM
+    PORTB |= 0x18;
     
     //Rc3 Rc4 IIC
     ODCONC |= 0x18;  

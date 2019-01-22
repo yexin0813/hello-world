@@ -100,7 +100,7 @@ void SYSTEM_Initialize(void)
     //WWDT_Initialize();
     //SPI1_Initialize();
     //PWM2_Initialize();
-    //ADC_Initialize();
+    ADC_Initialize();
     Init_MPU6500();
     TMR0_Initialize();
     Interrupt_Enable();

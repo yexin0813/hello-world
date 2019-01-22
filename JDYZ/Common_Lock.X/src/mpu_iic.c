@@ -295,6 +295,17 @@ void Init_MPU6500(void)
 	}
 }
 
+void PowerDown_Mpu6500(void)
+{
+    Com_Lock_MPU_Write_Command(PWR_MGMT_1,0x40);   		//????,??MPU6500s
+}
+
+void WakeUp_Mpu6500(void)
+{
+    Com_Lock_MPU_Write_Command(PWR_MGMT_1,0x00);   		//????,??MPU6500
+    __delay_ms(100);  //wait for work from powerdown mode
+}
+
 
 int8_t Test_Sleep_Mpu6500(void)
 {
