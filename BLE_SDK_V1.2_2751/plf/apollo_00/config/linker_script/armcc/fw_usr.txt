@@ -1,0 +1,103 @@
+#! armcc -E
+
+#define RAM_BASE                0x00100000
+#define RAM_LIMIT               0x00130000
+#define EM_START                0x00128000
+#define EM_END                  0x00129dc6
+#define ROM_CODE_ZI_BASE        0x0012f5cc
+#define ISR_JUMP_TABLE_SIZE     0x100
+#define DUMMY_ADDR              0xb0000000
+#define FLASH_MAPPED_ADDR       0x00800000
+#define IMAGE_OFFSET_IN_FLASH   0x1000
+#define IMAGE_HEADER_SIZE       0x80
+#define IMAGE_BASE_IN_FLASH     ((FLASH_MAPPED_ADDR)+(IMAGE_OFFSET_IN_FLASH)+(IMAGE_HEADER_SIZE))
+
+
+LR_FLASH1 IMAGE_BASE_IN_FLASH{
+    FLASH_CODE +0{
+        *(flash_section)   
+    #include "mesh_link.txt"
+	
+	
+	algApi.o(+RO)
+		CC_FPALG.c(+RO)
+		extract.o(+RO)
+		gaborFilter.o(+RO)
+		geometry.o(+RO)
+		imgProc.o(+RO)
+		match.o(+RO)
+		miscFunc.o(+RO)
+		
+		mafp_sensor.o(+RO)
+		malib.o(+RO)
+		policy.o(+RO)
+		sensor_hal.o(+RO)
+		sensor_identify.o(+RO)
+		sensor_sal.o(+RO)
+		sensor_utils.o(+RO)
+		tpls_mngr.o(+RO)
+		
+		
+		afs121.o(+RO)
+		calCorr.o(+RO)
+		removebkg.o(+RO)
+		
+		fsm.o(+RO)
+		synoc.o(+RO)
+		system.o(+RO)
+	
+	
+	
+	
+	
+	
+    }
+} 
+
+LR_RAM1 RAM_BASE ALIGN 0x80{
+    RAM_CODE +0 {
+        *(RESET, +First)
+        *(jump_table_area)
+    }
+    RAM_CODE_2 +0 {
+        *(+RO)
+        *(+RW)
+    }
+}
+
+
+LR_RAM2 ImageLimit(RAM_CODE_2) ALIGN 0x4
+{
+    BSS +0
+    {
+        *(+ZI)
+    }
+    HEAP_STACK +0 UNINIT
+    {
+        *(HEAP)
+        *(STACK)
+    } 
+    ScatterAssert(ImageLimit(HEAP_STACK)<=EM_START)
+    RWIP_ENV AlignExpr(EM_END,0x4)
+    {
+        rwip.o(+ZI)
+    }
+    BOOT_PARAMS +0 UNINIT{
+        *(boot_tunnel)
+    }
+    RAM_UNLOADED +0 EMPTY 12
+    {
+    }
+    ScatterAssert(ImageLimit(RAM_UNLOADED)<=ROM_CODE_ZI_BASE)
+}
+
+
+
+
+LR_FLASH2 DUMMY_ADDR
+{
+    NVDS_AREA +0 PADVALUE 0xffffffff 
+    {
+        *(nvds_area)
+    }
+}

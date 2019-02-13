@@ -1,0 +1,20 @@
+#! armcc -E
+#define RAM_ADDR_BASE      	0x00100000
+#define EM_END              0x0012a000
+LR_RAM1 RAM_ADDR_BASE ALIGN 0x80 {
+  RAM1 +0 0x28000
+  {
+    *(RESET, +First)
+    .ANY(+RO,+RW,+ZI)
+  }
+
+
+}
+LR_RAM2 EM_END{
+  RAM2 +0 0xa000 - 12{
+    .ANY(+RO,+RW,+ZI)
+  }
+  RAM_UNLOADED +0 EMPTY 12
+  {
+  }
+}

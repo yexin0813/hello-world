@@ -1,0 +1,279 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000         
+    3 00000000                 PRESERVE8
+    4 00000000                 THUMB
+    5 00000000                 AREA             |PATCH_SECTION|, CODE, READONLY
+    6 00000000         
+    7 00000000         
+    8 00000000         PATCH1  PROC
+    9 00000000                 EXPORT           PATCH1
+   10 00000000                 IMPORT           patch_test1
+   11 00000000 F7FF FFFE       BL               patch_test1
+   12 00000004 BD00            POP              {pc}
+   13 00000006                 ENDP
+   14 00000006         
+   15 00000006         PATCH2  PROC
+   16 00000006                 EXPORT           PATCH2
+   17 00000006                 IMPORT           patch_test2
+   18 00000006 F7FF FFFE       BL               patch_test2
+   19 0000000A BD00            POP              {pc}
+   20 0000000C                 ENDP
+   21 0000000C         
+   22 0000000C         PATCH3  PROC
+   23 0000000C                 EXPORT           PATCH3
+   24 0000000C                 IMPORT           patch_test3
+   25 0000000C F7FF FFFE       BL               patch_test3
+   26 00000010 BD00            POP              {pc}
+   27 00000012                 ENDP
+   28 00000012         
+   29 00000012         PATCH4  PROC
+   30 00000012                 EXPORT           PATCH4
+   31 00000012                 IMPORT           patch_test4
+   32 00000012 F7FF FFFE       BL               patch_test4
+   33 00000016 BD00            POP              {pc}
+   34 00000018                 ENDP
+   35 00000018         
+   36 00000018         PATCH5  PROC
+   37 00000018                 EXPORT           PATCH5
+   38 00000018                 IMPORT           patch_test5
+   39 00000018 F7FF FFFE       BL               patch_test5
+   40 0000001C BD00            POP              {pc}
+   41 0000001E                 ENDP
+   42 0000001E         
+   43 0000001E         PATCH6  PROC
+   44 0000001E                 EXPORT           PATCH6
+   45 0000001E                 IMPORT           patch_test6
+   46 0000001E F7FF FFFE       BL               patch_test6
+   47 00000022 BD00            POP              {pc}
+   48 00000024                 ENDP
+   49 00000024         
+   50 00000024         PATCH7  PROC
+   51 00000024                 EXPORT           PATCH7
+   52 00000024                 IMPORT           patch_test7
+   53 00000024 F7FF FFFE       BL               patch_test7
+   54 00000028 BD00            POP              {pc}
+   55 0000002A                 ENDP
+   56 0000002A         
+   57 0000002A         PATCH8  PROC
+   58 0000002A                 EXPORT           PATCH8
+   59 0000002A                 IMPORT           patch_test8
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   60 0000002A F7FF FFFE       BL               patch_test8
+   61 0000002E BD00            POP              {pc}
+   62 00000030                 ENDP
+   63 00000030         
+   64 00000030         
+   65 00000030                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
+work --depend=.\objects\patch_list.d -o.\objects\patch_list.o -INone -I.\RTE\_B
+LE -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM0plus\Include -ID:\Kei
+l_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_V
+ERSION SETA 526" --predefine="ARMCM0P SETA 1" --list=.\listings\patch_list.lst 
+..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_list.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+PATCH1 00000000
+
+Symbol: PATCH1
+   Definitions
+      At line 8 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_li
+st.s
+   Uses
+      At line 9 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_li
+st.s
+Comment: PATCH1 used once
+PATCH2 00000006
+
+Symbol: PATCH2
+   Definitions
+      At line 15 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 16 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: PATCH2 used once
+PATCH3 0000000C
+
+Symbol: PATCH3
+   Definitions
+      At line 22 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 23 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: PATCH3 used once
+PATCH4 00000012
+
+Symbol: PATCH4
+   Definitions
+      At line 29 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 30 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: PATCH4 used once
+PATCH5 00000018
+
+Symbol: PATCH5
+   Definitions
+      At line 36 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 37 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: PATCH5 used once
+PATCH6 0000001E
+
+Symbol: PATCH6
+   Definitions
+      At line 43 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 44 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Comment: PATCH6 used once
+PATCH7 00000024
+
+Symbol: PATCH7
+   Definitions
+      At line 50 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 51 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: PATCH7 used once
+PATCH8 0000002A
+
+Symbol: PATCH8
+   Definitions
+      At line 57 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 58 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: PATCH8 used once
+PATCH_SECTION 00000000
+
+Symbol: PATCH_SECTION
+   Definitions
+      At line 5 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_li
+st.s
+   Uses
+      None
+Comment: PATCH_SECTION unused
+9 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+patch_test1 00000000
+
+Symbol: patch_test1
+   Definitions
+      At line 10 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 11 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: patch_test1 used once
+patch_test2 00000000
+
+Symbol: patch_test2
+   Definitions
+      At line 17 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 18 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: patch_test2 used once
+patch_test3 00000000
+
+Symbol: patch_test3
+   Definitions
+      At line 24 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 25 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: patch_test3 used once
+patch_test4 00000000
+
+Symbol: patch_test4
+   Definitions
+      At line 31 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 32 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: patch_test4 used once
+patch_test5 00000000
+
+Symbol: patch_test5
+   Definitions
+      At line 38 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 39 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: patch_test5 used once
+patch_test6 00000000
+
+Symbol: patch_test6
+   Definitions
+      At line 45 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 46 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+External symbols
+
+Comment: patch_test6 used once
+patch_test7 00000000
+
+Symbol: patch_test7
+   Definitions
+      At line 52 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 53 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: patch_test7 used once
+patch_test8 00000000
+
+Symbol: patch_test8
+   Definitions
+      At line 59 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+   Uses
+      At line 60 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\patch_l
+ist.s
+Comment: patch_test8 used once
+8 symbols
+350 symbols in table

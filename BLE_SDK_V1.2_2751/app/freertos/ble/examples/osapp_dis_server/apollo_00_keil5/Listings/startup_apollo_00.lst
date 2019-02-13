@@ -1,0 +1,865 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;/******************************************************
+                       ********************//**
+    2 00000000         ; * @file     startup_apollo_00.s
+    3 00000000         ; * @brief    CMSIS Cortex-M0+ Core Device Startup File 
+                       for
+    4 00000000         ; *           Device apollo
+    5 00000000         ; * @version  V3.10
+    6 00000000         ; * @date     23. November 2012
+    7 00000000         ; *
+    8 00000000         ; * @note
+    9 00000000         ; *
+   10 00000000         ; ******************************************************
+                       ************************/
+   11 00000000         ;/* Copyright (c) 2012 ARM LIMITED
+   12 00000000         ;
+   13 00000000         ;   All rights reserved.
+   14 00000000         ;   Redistribution and use in source and binary forms, w
+                       ith or without
+   15 00000000         ;   modification, are permitted provided that the follow
+                       ing conditions are met: 
+   16 00000000         ;   - Redistributions of source code must retain the abo
+                       ve copyright
+   17 00000000         ;     notice, this list of conditions and the following 
+                       disclaimer.
+   18 00000000         ;   - Redistributions in binary form must reproduce the 
+                       above copyright
+   19 00000000         ;     notice, this list of conditions and the following 
+                       disclaimer in the
+   20 00000000         ;     documentation and/or other materials provided with
+                        the distribution.
+   21 00000000         ;   - Neither the name of ARM nor the names of its contr
+                       ibutors may be used
+   22 00000000         ;     to endorse or promote products derived from this s
+                       oftware without
+   23 00000000         ;     specific prior written permission.
+   24 00000000         ;   *
+   25 00000000         ;   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS A
+                       ND CONTRIBUTORS "AS IS"
+   26 00000000         ;   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BU
+                       T NOT LIMITED TO, THE
+   27 00000000         ;   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FO
+                       R A PARTICULAR PURPOSE
+   28 00000000         ;   ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS 
+                       AND CONTRIBUTORS BE
+   29 00000000         ;   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL
+                       , EXEMPLARY, OR
+   30 00000000         ;   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO
+                       , PROCUREMENT OF
+   31 00000000         ;   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+                       PROFITS; OR BUSINESS
+   32 00000000         ;   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LI
+                       ABILITY, WHETHER IN
+   33 00000000         ;   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLI
+                       GENCE OR OTHERWISE)
+   34 00000000         ;   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+                       EVEN IF ADVISED OF THE
+   35 00000000         ;   POSSIBILITY OF SUCH DAMAGE.
+   36 00000000         ;   ----------------------------------------------------
+                       -----------------------*/
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   37 00000000         ;/*
+   38 00000000         ;//-------- <<< Use Configuration Wizard in Context Menu
+                        >>> ------------------
+   39 00000000         ;*/
+   40 00000000         
+   41 00000000         
+   42 00000000         ; <h> Stack Configuration
+   43 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   44 00000000         ; </h>
+   45 00000000         
+   46 00000000 00001000 
+                       Stack_Size
+                               EQU              0x00001000
+   47 00000000         
+   48 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
+=3
+   49 00000000         Stack_Mem
+                               SPACE            Stack_Size
+   50 00001000         __initial_sp
+   51 00001000         
+   52 00001000         
+   53 00001000         
+   54 00001000         ; <h> Heap Configuration
+   55 00001000         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   56 00001000         ; </h>
+   57 00001000         
+   58 00001000 00000100 
+                       Heap_Size
+                               EQU              0x00000100
+   59 00001000         
+   60 00001000                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+3
+   61 00000000         __heap_base
+   62 00000000         Heap_Mem
+                               SPACE            Heap_Size
+   63 00000100         __heap_limit
+   64 00000100         
+   65 00000100         
+   66 00000100                 PRESERVE8
+   67 00000100                 THUMB
+   68 00000100         
+   69 00000100         
+   70 00000100         ; Vector Table Mapped to Address 0 at Reset
+   71 00000100         
+   72 00000100                 AREA             RESET, DATA, READONLY
+   73 00000000                 EXPORT           __Vectors
+   74 00000000                 EXPORT           __Vectors_End
+   75 00000000                 EXPORT           __Vectors_Size
+   76 00000000         
+   77 00000000 00000000 
+                       __Vectors
+                               DCD              __initial_sp ; Top of Stack
+   78 00000004 00000000        DCD              Reset_Handler ; Reset Handler
+   79 00000008 00000000        DCD              NMI_Handler ; NMI Handler
+   80 0000000C 00000000        DCD              HardFault_Handler ; Hard Fault 
+                                                            Handler
+   81 00000010 00000000        DCD              0           ; Reserved
+   82 00000014 00000000        DCD              0           ; Reserved
+   83 00000018 00000000        DCD              0           ; Reserved
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+   84 0000001C 00000000        DCD              0           ; Reserved
+   85 00000020 00000000        DCD              0           ; Reserved
+   86 00000024 00000000        DCD              0           ; Reserved
+   87 00000028 00000000        DCD              0           ; Reserved
+   88 0000002C 00000000        DCD              SVC_Handler ; SVCall Handler
+   89 00000030 00000000        DCD              0           ; Reserved
+   90 00000034 00000000        DCD              0           ; Reserved
+   91 00000038 00000000        DCD              PendSV_Handler ; PendSV Handler
+                                                            
+   92 0000003C 00000000        DCD              SysTick_Handler 
+                                                            ; SysTick Handler
+   93 00000040         
+   94 00000040         ; External Interrupts
+   95 00000040         
+   96 00000040 00000000        DCD              WDT_IRQHandler
+   97 00000044 00000000        DCD              BLE_LP_IRQHandler
+   98 00000048 00000000        DCD              BLE_MAC_IRQHandler
+   99 0000004C 00000000        DCD              RTC_IRQHandler
+  100 00000050 00000000        DCD              EXT_INTR_IRQHandler
+  101 00000054 00000000        DCD              ECC_IRQHandler
+  102 00000058 00000000        DCD              DMAC_IRQHandler
+  103 0000005C 00000000        DCD              QSPI_IRQHandler
+  104 00000060 00000000        DCD              SPIM0_IRQHandler
+  105 00000064 00000000        DCD              SPIM1_IRQHandler
+  106 00000068 00000000        DCD              SPIS_IRQHandler
+  107 0000006C 00000000        DCD              UART0_IRQHandler
+  108 00000070 00000000        DCD              UART1_IRQHandler
+  109 00000074 00000000        DCD              IIC0_IRQHandler
+  110 00000078 00000000        DCD              IIC1_IRQHandler
+  111 0000007C 00000000        DCD              GPIO_IRQHandler
+  112 00000080 00000000        DCD              TIMER_IRQHandler
+  113 00000084 00000000        DCD              SFT_IRQHandler
+  114 00000088 00000000        DCD              PGSPY_IRQHandler
+  115 0000008C         
+  116 0000008C         
+  117 0000008C         __Vectors_End
+  118 0000008C         
+  119 0000008C 0000008C 
+                       __Vectors_Size
+                               EQU              __Vectors_End - __Vectors
+  120 0000008C         
+  121 0000008C                 AREA             |.text|, CODE, READONLY
+  122 00000000         
+  123 00000000         
+  124 00000000         ; Reset Handler
+  125 00000000         
+  126 00000000         Reset_Handler
+                               PROC
+  127 00000000                 EXPORT           Reset_Handler             [WEAK
+]
+  128 00000000                 IMPORT           SystemInit
+  129 00000000                 IMPORT           __main
+  130 00000000 4C01            LDR              R4, =SystemInit
+  131 00000002 47A0            BLX              R4
+  132 00000004 4C01            LDR              R4, =__main
+  133 00000006 4720            BX               R4
+  134 00000008                 ENDP
+  135 00000008         
+  136 00000008 00000000 
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+              00000000         AREA             |.text.Default_Handler|, CODE, 
+READONLY
+  137 00000000         
+  138 00000000         ; Dummy Exception Handlers (infinite loops which can be 
+                       modified)
+  139 00000000         
+  140 00000000         Default_Handler
+                               PROC
+  141 00000000                 EXPORT           NMI_Handler               [WEAK
+]
+  142 00000000                 EXPORT           HardFault_Handler              
+ [WEAK]
+  143 00000000                 EXPORT           SVC_Handler               [WEAK
+]
+  144 00000000                 EXPORT           PendSV_Handler            [WEAK
+]
+  145 00000000                 EXPORT           SysTick_Handler           [WEAK
+]
+  146 00000000         
+  147 00000000                 EXPORT           WDT_IRQHandler           [WEAK]
+  148 00000000                 EXPORT           BLE_LP_IRQHandler          [WEA
+K]
+  149 00000000                 EXPORT           BLE_MAC_IRQHandler          [WE
+AK]
+  150 00000000                 EXPORT           RTC_IRQHandler           [WEAK]
+  151 00000000                 EXPORT           EXT_INTR_IRQHandler          [W
+EAK]
+  152 00000000                 EXPORT           ECC_IRQHandler            [WEAK
+]
+  153 00000000                 EXPORT           DMAC_IRQHandler           [WEAK
+]
+  154 00000000                 EXPORT           QSPI_IRQHandler           [WEAK
+]
+  155 00000000                 EXPORT           SPIM0_IRQHandler           [WEA
+K]
+  156 00000000                 EXPORT           SPIM1_IRQHandler           [WEA
+K]
+  157 00000000                 EXPORT           SPIS_IRQHandler          [WEAK]
+  158 00000000                 EXPORT           UART0_IRQHandler          [WEAK
+]
+  159 00000000                 EXPORT           UART1_IRQHandler          [WEAK
+]
+  160 00000000                 EXPORT           IIC0_IRQHandler          [WEAK]
+  161 00000000                 EXPORT           IIC1_IRQHandler          [WEAK]
+  162 00000000                 EXPORT           GPIO_IRQHandler          [WEAK]
+  163 00000000                 EXPORT           TIMER_IRQHandler          [WEAK
+]
+  164 00000000                 EXPORT           SFT_IRQHandler          [WEAK]
+  165 00000000                 EXPORT           PGSPY_IRQHandler          [WEAK
+]
+  166 00000000         NMI_Handler
+  167 00000000         HardFault_Handler
+  168 00000000         SVC_Handler
+  169 00000000         PendSV_Handler
+  170 00000000         SysTick_Handler
+  171 00000000         WDT_IRQHandler
+  172 00000000         BLE_LP_IRQHandler
+  173 00000000         BLE_MAC_IRQHandler
+  174 00000000         RTC_IRQHandler
+
+
+
+ARM Macro Assembler    Page 5 
+
+
+  175 00000000         EXT_INTR_IRQHandler
+  176 00000000         ECC_IRQHandler
+  177 00000000         DMAC_IRQHandler
+  178 00000000         QSPI_IRQHandler
+  179 00000000         SPIM0_IRQHandler
+  180 00000000         SPIM1_IRQHandler
+  181 00000000         SPIS_IRQHandler
+  182 00000000         UART0_IRQHandler
+  183 00000000         UART1_IRQHandler
+  184 00000000         IIC0_IRQHandler
+  185 00000000         IIC1_IRQHandler
+  186 00000000         GPIO_IRQHandler
+  187 00000000         TIMER_IRQHandler
+  188 00000000         SFT_IRQHandler
+  189 00000000         PGSPY_IRQHandler
+  190 00000000 E7FE            B                .
+  191 00000002                 ENDP
+  192 00000002         
+  193 00000002 00 00           ALIGN
+  194 00000004         
+  195 00000004         
+  196 00000004         ; User Initial Stack & Heap
+  197 00000004         
+  198 00000004                 IF               :DEF:__MICROLIB
+  199 00000004         
+  200 00000004                 EXPORT           __initial_sp
+  201 00000004                 EXPORT           __heap_base
+  202 00000004                 EXPORT           __heap_limit
+  203 00000004         
+  204 00000004                 ELSE
+  219                          ENDIF
+  220 00000004         
+  221 00000004         
+  222 00000004                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
+work --depend=.\objects\startup_apollo_00.d -o.\objects\startup_apollo_00.o -IN
+one -I.\RTE\_BLE -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM0plus\In
+clude -ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --predefin
+e="__UVISION_VERSION SETA 526" --predefine="ARMCM0P SETA 1" --list=.\listings\s
+tartup_apollo_00.lst ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\startu
+p_apollo_00.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STACK 00000000
+
+Symbol: STACK
+   Definitions
+      At line 48 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      None
+Comment: STACK unused
+Stack_Mem 00000000
+
+Symbol: Stack_Mem
+   Definitions
+      At line 49 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      None
+Comment: Stack_Mem unused
+__initial_sp 00001000
+
+Symbol: __initial_sp
+   Definitions
+      At line 50 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      At line 77 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 200 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+HEAP 00000000
+
+Symbol: HEAP
+   Definitions
+      At line 60 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      None
+Comment: HEAP unused
+Heap_Mem 00000000
+
+Symbol: Heap_Mem
+   Definitions
+      At line 62 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      None
+Comment: Heap_Mem unused
+__heap_base 00000000
+
+Symbol: __heap_base
+   Definitions
+      At line 61 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      At line 201 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+Comment: __heap_base used once
+__heap_limit 00000100
+
+Symbol: __heap_limit
+   Definitions
+      At line 63 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      At line 202 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+Comment: __heap_limit used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 72 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 77 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      At line 73 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 119 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+__Vectors_End 0000008C
+
+Symbol: __Vectors_End
+   Definitions
+      At line 117 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 74 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 119 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 121 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      None
+Comment: .text unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 126 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 78 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 127 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text.Default_Handler 00000000
+
+Symbol: .text.Default_Handler
+   Definitions
+      At line 136 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      None
+Comment: .text.Default_Handler unused
+BLE_LP_IRQHandler 00000000
+
+Symbol: BLE_LP_IRQHandler
+   Definitions
+      At line 172 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 97 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 148 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+BLE_MAC_IRQHandler 00000000
+
+Symbol: BLE_MAC_IRQHandler
+   Definitions
+      At line 173 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 98 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 149 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+DMAC_IRQHandler 00000000
+
+Symbol: DMAC_IRQHandler
+   Definitions
+      At line 177 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 102 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 153 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+Default_Handler 00000000
+
+Symbol: Default_Handler
+   Definitions
+      At line 140 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      None
+Comment: Default_Handler unused
+ECC_IRQHandler 00000000
+
+Symbol: ECC_IRQHandler
+   Definitions
+      At line 176 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+tartup_apollo_00.s
+   Uses
+      At line 101 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 152 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+EXT_INTR_IRQHandler 00000000
+
+Symbol: EXT_INTR_IRQHandler
+   Definitions
+      At line 175 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 100 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 151 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+GPIO_IRQHandler 00000000
+
+Symbol: GPIO_IRQHandler
+   Definitions
+      At line 186 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 111 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 162 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+HardFault_Handler 00000000
+
+Symbol: HardFault_Handler
+   Definitions
+      At line 167 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 80 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 142 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+IIC0_IRQHandler 00000000
+
+Symbol: IIC0_IRQHandler
+   Definitions
+      At line 184 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 109 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 160 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+IIC1_IRQHandler 00000000
+
+Symbol: IIC1_IRQHandler
+   Definitions
+
+
+
+ARM Macro Assembler    Page 3 Alphabetic symbol ordering
+Relocatable symbols
+
+      At line 185 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 110 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 161 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+NMI_Handler 00000000
+
+Symbol: NMI_Handler
+   Definitions
+      At line 166 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 79 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 141 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+PGSPY_IRQHandler 00000000
+
+Symbol: PGSPY_IRQHandler
+   Definitions
+      At line 189 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 114 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 165 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+PendSV_Handler 00000000
+
+Symbol: PendSV_Handler
+   Definitions
+      At line 169 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 91 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 144 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+QSPI_IRQHandler 00000000
+
+Symbol: QSPI_IRQHandler
+   Definitions
+      At line 178 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 103 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 154 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+RTC_IRQHandler 00000000
+
+Symbol: RTC_IRQHandler
+
+
+
+ARM Macro Assembler    Page 4 Alphabetic symbol ordering
+Relocatable symbols
+
+   Definitions
+      At line 174 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 99 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 150 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+SFT_IRQHandler 00000000
+
+Symbol: SFT_IRQHandler
+   Definitions
+      At line 188 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 113 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 164 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+SPIM0_IRQHandler 00000000
+
+Symbol: SPIM0_IRQHandler
+   Definitions
+      At line 179 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 104 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 155 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+SPIM1_IRQHandler 00000000
+
+Symbol: SPIM1_IRQHandler
+   Definitions
+      At line 180 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 105 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 156 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+SPIS_IRQHandler 00000000
+
+Symbol: SPIS_IRQHandler
+   Definitions
+      At line 181 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 106 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 157 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+SVC_Handler 00000000
+
+
+
+
+ARM Macro Assembler    Page 5 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: SVC_Handler
+   Definitions
+      At line 168 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 88 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 143 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+SysTick_Handler 00000000
+
+Symbol: SysTick_Handler
+   Definitions
+      At line 170 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 92 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 145 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+TIMER_IRQHandler 00000000
+
+Symbol: TIMER_IRQHandler
+   Definitions
+      At line 187 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 112 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 163 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+UART0_IRQHandler 00000000
+
+Symbol: UART0_IRQHandler
+   Definitions
+      At line 182 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 107 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 158 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+UART1_IRQHandler 00000000
+
+Symbol: UART1_IRQHandler
+   Definitions
+      At line 183 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 108 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+      At line 159 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+WDT_IRQHandler 00000000
+
+
+
+ARM Macro Assembler    Page 6 Alphabetic symbol ordering
+Relocatable symbols
+
+
+Symbol: WDT_IRQHandler
+   Definitions
+      At line 171 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 96 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+      At line 147 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+
+26 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+Heap_Size 00000100
+
+Symbol: Heap_Size
+   Definitions
+      At line 58 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      At line 62 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+Comment: Heap_Size used once
+Stack_Size 00001000
+
+Symbol: Stack_Size
+   Definitions
+      At line 46 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+   Uses
+      At line 49 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+Comment: Stack_Size used once
+__Vectors_Size 0000008C
+
+Symbol: __Vectors_Size
+   Definitions
+      At line 119 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 75 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\st
+artup_apollo_00.s
+Comment: __Vectors_Size used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+SystemInit 00000000
+
+Symbol: SystemInit
+   Definitions
+      At line 128 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 130 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+Comment: SystemInit used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 129 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+   Uses
+      At line 132 in file ..\..\..\..\..\..\plf\apollo_00\src\arch\boot\armcc\s
+tartup_apollo_00.s
+Comment: __main used once
+2 symbols
+378 symbols in table

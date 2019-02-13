@@ -1,0 +1,5 @@
+add_subdirectory(l2c)
+add_subdirectory(gatt)
+add_subdirectory(gap)
+add_subdirectory(prf)
+add_subdirectory(rwble_hl)

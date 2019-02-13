@@ -1,0 +1,15 @@
+.\objects\charger.o: ..\..\..\..\..\..\plf\apollo_00\src\peripheral_integration\charger\charger.c
+.\objects\charger.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\apollo_00\src\peripheral_integration\charger\charger.h
+.\objects\charger.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\bx_config.h
+.\objects\charger.o: ..\..\osapp_dis_server\bx_app_config.h
+.\objects\charger.o: ..\..\..\..\..\..\ip\bx_ip_config.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\apollo_00\bx_sys_config.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\apollo_00\bx_pcb_config.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\apollo_00\src\sys_integration\sysctrl\rf_reg_typedef.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\apollo_00\src\sys_integration\sysctrl\io_ctrl.h
+.\objects\charger.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\apollo_00\src\sys_integration\periph_mngt\periph_mngt.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\peripheral\periph_common.h
+.\objects\charger.o: ..\..\..\..\..\..\plf\peripheral\sleep_recovery\periph_recovery.h

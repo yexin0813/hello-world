@@ -1,17 +1,17 @@
 
 # 1 "src/tmr0.c"
 
-# 18 "../../../../../Microchip/xc8/v2.00/pic/include\xc.h"
+# 18 "E:\Microchip\xc8\v2.00\pic\include\xc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\xc8debug.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 108 "../../../../../Microchip/xc8/v2.00/pic/include\pic16f15354.h"
+# 108 "E:\Microchip\xc8\v2.00\pic\include\pic16f15354.h"
 extern volatile unsigned char INDF0 __at(0x000);
 
 asm("INDF0 equ 00h");
@@ -12494,7 +12494,7 @@ extern volatile __bit nWRITE1 __at(0xC7A);
 extern volatile __bit nWRITE2 __at(0xCCA);
 
 
-# 30 "../../../../../Microchip/xc8/v2.00/pic/include\pic.h"
+# 30 "E:\Microchip\xc8\v2.00\pic\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
@@ -12517,10 +12517,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdint.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdint.h"
 typedef signed char int8_t;
 
 # 20
@@ -12626,8 +12626,10 @@ void EUSART_Transmit_ISR(void);
 void EUSART_Receive_ISR(void);
 
 void EUSART_Enable_WakeUp(void);
+void Clear_FrameDone(void);
+void UART_Task(void);
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
 # 104 "src/../inc/tmr0.h"
@@ -12654,7 +12656,7 @@ void TMR0_ISR(void);
 # 313
 void TMR0_Task(void);
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
 # 21 "src/../inc/../inc/filter.h"
@@ -12668,11 +12670,13 @@ void Init_MPU6500(void);
 void Test_MPU_6500(void);
 float Mpu6500GyroAngle(int8_t dir);
 int8_t Test_Sleep_Mpu6500(void);
+void PowerDown_Mpu6500(void);
+void WakeUp_Mpu6500(void);
 
 # 110 "src/../inc/interrupt_manager.h"
 void interrupt INTERRUPT_InterruptManager(void);
 
-# 137
+# 139
 void Interrupt_Enable(void);
 
 # 57 "src/tmr0.c"
@@ -12680,8 +12684,9 @@ extern uint8_t gu8OperationState;
 extern uint8_t gu8DoorState;
 uint16_t gu16RstTimCnt = 0;
 uint16_t gu16OpenTimCnt = 0;
+uint8_t gu8UartTicnt = 0;
 
-# 67
+# 68
 void (*TMR0_InterruptHandler)(void);
 
 void TMR0_Initialize(void)
@@ -12711,7 +12716,10 @@ T0CON0 = 0x80;
 void TMR0_StartTimer(void)
 {
 
+if(T0CON0bits.T0EN == 0)
+{
 T0CON0bits.T0EN = 1;
+}
 }
 
 void TMR0_StopTimer(void)
@@ -12756,6 +12764,10 @@ if(gu8DoorState == 0)
 {
 gu16OpenTimCnt++;
 TMR0_Task();
+}
+if(gu8OperationState&0x10)
+{
+gu8UartTicnt++;
 }
 
 

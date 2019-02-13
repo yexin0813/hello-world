@@ -1,0 +1,13 @@
+.\objects\diss.o: ..\..\..\..\..\..\ip\ble\profiles\dis\diss\src\diss.c
+.\objects\diss.o: ..\..\..\..\..\..\modules\rwip\api\rwip_config.h
+.\objects\diss.o: ..\..\..\..\..\..\plf\bx_config.h
+.\objects\diss.o: ..\..\osapp_dis_server\bx_app_config.h
+.\objects\diss.o: ..\..\..\..\..\..\ip\bx_ip_config.h
+.\objects\diss.o: ..\..\..\..\..\..\plf\apollo_00\bx_sys_config.h
+.\objects\diss.o: ..\..\..\..\..\..\plf\apollo_00\bx_pcb_config.h
+.\objects\diss.o: ..\..\..\..\..\..\ip\ble\ll\src\rwble\rwble_config.h
+.\objects\diss.o: ..\..\..\..\..\..\modules\rwip\api\rwip_config.h
+.\objects\diss.o: ..\..\..\..\..\..\ip\ble\hl\inc\rwble_hl_config.h
+.\objects\diss.o: ..\..\..\..\..\..\plf\apollo_00\src\jmp_table\jump_table.h
+.\objects\diss.o: ..\..\..\..\..\..\ip\ble\hl\api\rwble_hl_error.h
+.\objects\diss.o: ..\..\..\..\..\..\ip\ble\hl\inc\rwprf_config.h

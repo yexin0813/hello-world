@@ -1,0 +1,10 @@
+.\objects\calcorr.o: ..\..\..\..\..\..\fingerprint\mafp\algTop\calCorr.c
+.\objects\calcorr.o: ..\..\..\..\..\..\fingerprint\mafp\algTop\algorithm.h
+.\objects\calcorr.o: ..\..\..\..\..\..\fingerprint\mafp\malib.h
+.\objects\calcorr.o: ..\..\..\..\..\..\fingerprint\mafp\mafp_defs.h
+.\objects\calcorr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\calcorr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\calcorr.o: ..\..\..\..\..\..\plf\peripheral\microarray\uart\m_uart.h
+.\objects\calcorr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\calcorr.o: ..\..\..\..\..\..\fingerprint\config.h
+.\objects\calcorr.o: ..\..\..\..\..\..\fingerprint\mafp\algTop\afs121.h

@@ -1,0 +1,15 @@
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\mafp\sensor_identify.c
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\mafp\sensor_identify.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\mafp\mafp_defs.h
+.\objects\sensor_identify.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sensor_identify.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\plf\peripheral\microarray\uart\m_uart.h
+.\objects\sensor_identify.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\config.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\mafp\sensor_reg.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\mafp\sensor_hal.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\mafp\malib.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\fingerprint\mafp\platform.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\plf\peripheral\microarray\flash\m_flash.h
+.\objects\sensor_identify.o: ..\..\..\..\..\..\plf\peripheral\flash\flash.h
+.\objects\sensor_identify.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

@@ -1,0 +1,7 @@
+set(SRC
+${CMAKE_CURRENT_SOURCE_DIR}/gapc.c
+${CMAKE_CURRENT_SOURCE_DIR}/gapc_task.c
+${CMAKE_CURRENT_SOURCE_DIR}/gapc_hci.c
+${CMAKE_CURRENT_SOURCE_DIR}/gapc_sig.c
+)
+add_sources(ROM_00_SRCS ${SRC})

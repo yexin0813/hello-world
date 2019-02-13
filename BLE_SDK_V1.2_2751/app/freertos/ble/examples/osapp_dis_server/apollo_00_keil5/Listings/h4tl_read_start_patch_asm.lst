@@ -1,0 +1,72 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8
+    2 00000000                 THUMB
+    3 00000000                 AREA             |.text|, CODE, READONLY
+    4 00000000         
+    5 00000000         H4TL_READ_START_PATCH
+                               PROC
+    6 00000000                 EXPORT           H4TL_READ_START_PATCH
+    7 00000000                 IMPORT           h4tl_read_start_patch
+    8 00000000         
+    9 00000000 F7FF FFFE       BL               h4tl_read_start_patch
+   10 00000004 BD10            POP              {r4,pc}
+   11 00000006         
+   12 00000006                 ENDP
+   13 00000006         
+   14 00000006                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
+work --depend=.\objects\h4tl_read_start_patch_asm.d -o.\objects\h4tl_read_start
+_patch_asm.o -INone -I.\RTE\_BLE -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\A
+RM\ARMCM0plus\Include -ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SE
+TA 1" --predefine="__UVISION_VERSION SETA 526" --predefine="ARMCM0P SETA 1" --l
+ist=.\listings\h4tl_read_start_patch_asm.lst ..\..\..\..\..\..\plf\apollo_00\sr
+c\patch_list\armcc\h4tl_read_start_patch_asm.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 3 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_read_start_patch_asm.s
+   Uses
+      None
+Comment: .text unused
+H4TL_READ_START_PATCH 00000000
+
+Symbol: H4TL_READ_START_PATCH
+   Definitions
+      At line 5 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_read_start_patch_asm.s
+   Uses
+      At line 6 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_read_start_patch_asm.s
+Comment: H4TL_READ_START_PATCH used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+h4tl_read_start_patch 00000000
+
+Symbol: h4tl_read_start_patch
+   Definitions
+      At line 7 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_read_start_patch_asm.s
+   Uses
+      At line 9 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_read_start_patch_asm.s
+Comment: h4tl_read_start_patch used once
+1 symbol
+336 symbols in table

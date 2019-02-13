@@ -1,0 +1,94 @@
+MEMORY
+{
+  RAM (rwx) : ORIGIN = 0x00100000, LENGTH = 0x28000
+  EM (rwx) : ORIGIN = 0x00129dc6, LENGTH = 0x623A
+  FLASH (rx) : ORIGIN = 0x00801080, LENGTH = 0x300000
+}
+
+ENTRY(Reset_Handler)
+
+SECTIONS
+{
+    FLASH_CODE :
+    {    
+        KEEP(*(flash_section))
+        *__/__/model*(.text*)
+        *__/__/gatt*(.text*)
+        *__/__/core*(.text*)
+        *__/__/tools*(.text*)
+        *__/__/device_manager*(.text*)
+        *__/__/provision*(.text*)
+        *__/__/model*(.text*)
+        *__/__/gatt*(.rodata*)
+        *__/__/core*(.rodata*)
+        *__/__/tools*(.rodata*)
+        *__/__/device_manager*(.rodata*)
+        *__/__/provision*(.rodata*)
+        *__/__/mesh_test*(.rodata*)
+    }> FLASH
+    
+    RAM_CODE :  
+    { 
+        KEEP(*(.isr_vector))
+        KEEP(*(jump_table_area))
+        *(.init)
+        *(.fini)       
+        *(.text*)
+        *(.rodata*)
+        *(HARDFAULT_CODE)
+        *(.eh_frame*)
+        *(.data*) 
+    }> RAM
+    .copy.table :
+    {
+        . = ALIGN(4);
+        __copy_table_start__ = .;
+        __copy_table_end__ = .;
+    }> RAM
+    .zero.table :
+    {
+        . = ALIGN(4);
+        __zero_table_start__ = .;
+        LONG (__bss_start__)
+        LONG (__bss_end__ - __bss_start__)
+        __zero_table_end__ = .;
+    }> RAM
+    RWIP_ENV (NOLOAD):
+    {
+        *rwip*(.bss* COMMON)
+    }> EM
+    .bss (NOLOAD):
+    {
+        __bss_start__ = .;
+        *(.bss*) 
+        *(SECTION_RTT)
+        *(COMMON)
+        __bss_end__ = .;
+    }> RAM
+    .heap (NOLOAD):
+    {
+        __end__ = .;
+        PROVIDE(end = .);
+        *(.heap*)
+        __HeapLimit = .;
+    }> RAM
+    .stack_dummy (NOLOAD):
+    {
+        *(.stack*)
+
+    }> RAM
+    ASSERT( __StackTop <= 0x128000 ,"Error, RAM overflow")
+    BOOT_PARAMS (NOLOAD): {*(boot_tunnel)}> EM
+    RAM_UNLOADED (NOLOAD):
+    { 
+        . = ALIGN(4); 
+        unloaded_area_start = .;
+        . += 12;
+        unloaded_area_start_end = .;
+    }> EM
+
+    NVDS_AREA 0xb0000000 :
+    {
+        KEEP(*(nvds_area))
+    }
+}

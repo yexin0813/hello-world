@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F15354 ]
 [d frameptr 6 ]
-"115 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/adc.c
+"115 F:\repository_git\JDYZ\Common_Lock.X\src/adc.c
 [e E7175 . `uc
 POT_CHANNEL 0
 channel_AVSS 59
@@ -33,22 +33,36 @@ channel_FVR_BUF2 63
 [v ___ftneg __ftneg `(f  1 e 3 0 ]
 "44 E:\Microchip\xc8\v2.00\pic\sources\c90\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
-"64 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\main.c
+"5 E:\Microchip\xc8\v2.00\pic\sources\c90\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"15 E:\Microchip\xc8\v2.00\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"65 F:\repository_git\JDYZ\Common_Lock.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"114 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/adc.c
+"64 F:\repository_git\JDYZ\Common_Lock.X\src/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"114
 [v _ADC_GetConversion ADC_GetConversion `(ui  1 e 2 0 ]
-"77 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/eusart.c
+"137
+[v _ADC_Get_Vol ADC_Get_Vol `(uc  1 e 1 0 ]
+"94 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
-"115
-[v _EUSART_Enable_WakeUp EUSART_Enable_WakeUp `(v  1 e 1 0 ]
-"144
+"138
+[v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
+"185
 [v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
 [v i1_EUSART_Write EUSART_Write `(v  1 e 1 0 ]
-"171
+"212
+[v _EUSART_Write_Frame EUSART_Write_Frame `(v  1 e 1 0 ]
+"237
+[v _UART_Task UART_Task `(v  1 e 1 0 ]
+"257
+[v _Clear_FrameDone Clear_FrameDone `(v  1 e 1 0 ]
+"265
 [v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
-"190
+"284
 [v _EUSART_Receive_ISR EUSART_Receive_ISR `(v  1 e 1 0 ]
-"91 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/filter.c
+"91 F:\repository_git\JDYZ\Common_Lock.X\src/filter.c
 [v _AngleCalcu AngleCalcu `(v  1 e 1 0 ]
 "107
 [v _ClearAngle ClearAngle `(v  1 e 1 0 ]
@@ -56,23 +70,23 @@ channel_FVR_BUF2 63
 [v _CheckDoorOpened CheckDoorOpened `(uc  1 e 1 0 ]
 "122
 [v _CheckDoorClosed CheckDoorClosed `(uc  1 e 1 0 ]
-"50 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/gpio.c
+"50 F:\repository_git\JDYZ\Common_Lock.X\src/gpio.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"139
+"143
 [v _ReadRstPIN ReadRstPIN `(uc  1 e 1 0 ]
-"148
+"152
 [v _ReadTouchKeyPIN ReadTouchKeyPIN `(uc  1 e 1 0 ]
-"57 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/interrupt_manager.c
+"58 F:\repository_git\JDYZ\Common_Lock.X\src/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"98
+"102
 [v _Interrupt_Enable Interrupt_Enable `(v  1 e 1 0 ]
-"93 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mcc.c
+"93 F:\repository_git\JDYZ\Common_Lock.X\src/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 "112
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "128
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
-"40 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mpu_iic.c
+"40 F:\repository_git\JDYZ\Common_Lock.X\src/mpu_iic.c
 [v _Com_Lock_IIC_Start Com_Lock_IIC_Start `(v  1 s 1 Com_Lock_IIC_Start ]
 [v i1_Com_Lock_IIC_Start Com_Lock_IIC_Start `(v  1 s 1 i1_Com_Lock_IIC_Start ]
 "60
@@ -98,28 +112,30 @@ channel_FVR_BUF2 63
 [v _Mpu6500GyroAngle Mpu6500GyroAngle `(f  1 e 3 0 ]
 "281
 [v _Init_MPU6500 Init_MPU6500 `(v  1 e 1 0 ]
-"69 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/tmr0.c
+"70 F:\repository_git\JDYZ\Common_Lock.X\src/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
-"93
+"94
 [v _TMR0_StartTimer TMR0_StartTimer `(v  1 e 1 0 ]
 [v i1_TMR0_StartTimer TMR0_StartTimer `(v  1 e 1 0 ]
-"99
+"103
 [v _TMR0_StopTimer TMR0_StopTimer `(v  1 e 1 0 ]
-"127
+"131
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
-"150
+"158
 [v _TMR0_Task TMR0_Task `(v  1 e 1 0 ]
-[s S403 . 1 `uc 1 INTEDG 1 0 :1:0 
+[s S425 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-"426 E:/Microchip/xc8/v2.00/pic/include\pic16f15354.h
-[u S408 . 1 `S403 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES408  1 e 1 @11 ]
+"426 E:\Microchip\xc8\v2.00\pic\include\pic16f15354.h
+[u S430 . 1 `S425 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES430  1 e 1 @11 ]
 "446
 [v _PORTA PORTA `VEuc  1 e 1 @12 ]
-[s S160 . 1 `uc 1 RB0 1 0 :1:0 
+"508
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+[s S166 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -129,11 +145,11 @@ channel_FVR_BUF2 63
 `uc 1 RB7 1 0 :1:7 
 ]
 "525
-[u S169 . 1 `S160 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES169  1 e 1 @13 ]
+[u S175 . 1 `S166 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES175  1 e 1 @13 ]
 "570
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
-[s S527 . 1 `uc 1 RC0 1 0 :1:0 
+[s S553 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -143,14 +159,16 @@ channel_FVR_BUF2 63
 `uc 1 RC7 1 0 :1:7 
 ]
 "587
-[u S536 . 1 `S527 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES536  1 e 1 @14 ]
+[u S562 . 1 `S553 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES562  1 e 1 @14 ]
 "653
 [v _TRISA TRISA `VEuc  1 e 1 @18 ]
 "715
 [v _TRISB TRISB `VEuc  1 e 1 @19 ]
 "777
 [v _TRISC TRISC `VEuc  1 e 1 @20 ]
+"839
+[v _TRISE TRISE `VEuc  1 e 1 @22 ]
 "860
 [v _LATA LATA `VEuc  1 e 1 @24 ]
 "922
@@ -163,7 +181,7 @@ channel_FVR_BUF2 63
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
 "1193
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
-[s S470 . 1 `uc 1 ADON 1 0 :1:0 
+[s S492 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GOnDONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -173,12 +191,12 @@ channel_FVR_BUF2 63
 `uc 1 CHS5 1 0 :1:7 
 ]
 "1215
-[s S479 . 1 `uc 1 . 1 0 :1:0 
+[s S501 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS 1 0 :6:2 
 ]
-[u S483 . 1 `S470 1 . 1 0 `S479 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES483  1 e 1 @157 ]
+[u S505 . 1 `S492 1 . 1 0 `S501 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES505  1 e 1 @157 ]
 "1270
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
 "1336
@@ -193,7 +211,7 @@ channel_FVR_BUF2 63
 [v _SP1BRGH SP1BRGH `VEuc  1 e 1 @284 ]
 "1627
 [v _RC1STA RC1STA `VEuc  1 e 1 @285 ]
-[s S240 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S250 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -203,8 +221,8 @@ channel_FVR_BUF2 63
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1653
-[u S249 . 1 `S240 1 . 1 0 ]
-[v _RC1STAbits RC1STAbits `VES249  1 e 1 @285 ]
+[u S259 . 1 `S250 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES259  1 e 1 @285 ]
 "1807
 [v _TX1STA TX1STA `VEuc  1 e 1 @286 ]
 "1987
@@ -215,31 +233,31 @@ channel_FVR_BUF2 63
 [v _TMR0H TMR0H `VEuc  1 e 1 @1437 ]
 "8126
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @1438 ]
-[s S641 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S668 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T016BIT 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
 "8146
-[s S647 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
+[s S674 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
 `uc 1 T0OUTPS1 1 0 :1:1 
 `uc 1 T0OUTPS2 1 0 :1:2 
 `uc 1 T0OUTPS3 1 0 :1:3 
 ]
-[u S652 . 1 `S641 1 . 1 0 `S647 1 . 1 0 ]
-[v _T0CON0bits T0CON0bits `VES652  1 e 1 @1438 ]
+[u S679 . 1 `S668 1 . 1 0 `S674 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES679  1 e 1 @1438 ]
 "8191
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @1439 ]
-[s S338 . 1 `uc 1 INTF 1 0 :1:0 
+[s S365 . 1 `uc 1 INTF 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIF 1 0 :1:4 
 `uc 1 TMR0IF 1 0 :1:5 
 ]
 "9052
-[u S343 . 1 `S338 1 . 1 0 ]
-[v _PIR0bits PIR0bits `VES343  1 e 1 @1804 ]
-[s S307 . 1 `uc 1 SSP1IF 1 0 :1:0 
+[u S370 . 1 `S365 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES370  1 e 1 @1804 ]
+[s S328 . 1 `uc 1 SSP1IF 1 0 :1:0 
 `uc 1 BCL1IF 1 0 :1:1 
 `uc 1 SSP2IF 1 0 :1:2 
 `uc 1 BCL2IF 1 0 :1:3 
@@ -249,17 +267,17 @@ channel_FVR_BUF2 63
 `uc 1 RC2IF 1 0 :1:7 
 ]
 "9161
-[u S316 . 1 `S307 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES316  1 e 1 @1807 ]
-[s S147 . 1 `uc 1 INTE 1 0 :1:0 
+[u S337 . 1 `S328 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES337  1 e 1 @1807 ]
+[s S153 . 1 `uc 1 INTE 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIE 1 0 :1:4 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
 "9358
-[u S152 . 1 `S147 1 . 1 0 ]
-[v _PIE0bits PIE0bits `VES152  1 e 1 @1814 ]
-[s S213 . 1 `uc 1 SSP1IE 1 0 :1:0 
+[u S158 . 1 `S153 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES158  1 e 1 @1814 ]
+[s S219 . 1 `uc 1 SSP1IE 1 0 :1:0 
 `uc 1 BCL1IE 1 0 :1:1 
 `uc 1 SSP2IE 1 0 :1:2 
 `uc 1 BCL2IE 1 0 :1:3 
@@ -269,8 +287,8 @@ channel_FVR_BUF2 63
 `uc 1 RC2IE 1 0 :1:7 
 ]
 "9467
-[u S222 . 1 `S213 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES222  1 e 1 @1817 ]
+[u S228 . 1 `S219 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES228  1 e 1 @1817 ]
 "9651
 [v _PMD0 PMD0 `VEuc  1 e 1 @1942 ]
 "9696
@@ -297,18 +315,18 @@ channel_FVR_BUF2 63
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2195 ]
 "11443
 [v _FVRCON FVRCON `VEuc  1 e 1 @2316 ]
-[s S81 . 1 `uc 1 RX1DTPPS 1 0 :6:0 
+[s S86 . 1 `uc 1 RX1DTPPS 1 0 :6:0 
 ]
 "18247
-[s S83 . 1 `uc 1 RX1DTPPS0 1 0 :1:0 
+[s S88 . 1 `uc 1 RX1DTPPS0 1 0 :1:0 
 `uc 1 RX1DTPPS1 1 0 :1:1 
 `uc 1 RX1DTPPS2 1 0 :1:2 
 `uc 1 RX1DTPPS3 1 0 :1:3 
 `uc 1 RX1DTPPS4 1 0 :1:4 
 `uc 1 RX1DTPPS5 1 0 :1:5 
 ]
-[u S90 . 1 `S81 1 . 1 0 `S83 1 . 1 0 ]
-[v _RX1DTPPSbits RX1DTPPSbits `VES90  1 e 1 @7883 ]
+[u S95 . 1 `S86 1 . 1 0 `S88 1 . 1 0 ]
+[v _RX1DTPPSbits RX1DTPPSbits `VES95  1 e 1 @7883 ]
 "19429
 [v _RC6PPS RC6PPS `VEuc  1 e 1 @7974 ]
 "19517
@@ -323,7 +341,7 @@ channel_FVR_BUF2 63
 [v _WPUB WPUB `VEuc  1 e 1 @8004 ]
 "20137
 [v _ODCONB ODCONB `VEuc  1 e 1 @8005 ]
-[s S105 . 1 `uc 1 IOCBN0 1 0 :1:0 
+[s S111 . 1 `uc 1 IOCBN0 1 0 :1:0 
 `uc 1 IOCBN1 1 0 :1:1 
 `uc 1 IOCBN2 1 0 :1:2 
 `uc 1 IOCBN3 1 0 :1:3 
@@ -333,9 +351,9 @@ channel_FVR_BUF2 63
 `uc 1 IOCBN7 1 0 :1:7 
 ]
 "20402
-[u S114 . 1 `S105 1 . 1 0 ]
-[v _IOCBNbits IOCBNbits `VES114  1 e 1 @8009 ]
-[s S355 . 1 `uc 1 IOCBF0 1 0 :1:0 
+[u S120 . 1 `S111 1 . 1 0 ]
+[v _IOCBNbits IOCBNbits `VES120  1 e 1 @8009 ]
+[s S382 . 1 `uc 1 IOCBF0 1 0 :1:0 
 `uc 1 IOCBF1 1 0 :1:1 
 `uc 1 IOCBF2 1 0 :1:2 
 `uc 1 IOCBF3 1 0 :1:3 
@@ -345,15 +363,15 @@ channel_FVR_BUF2 63
 `uc 1 IOCBF7 1 0 :1:7 
 ]
 "20464
-[u S364 . 1 `S355 1 . 1 0 ]
-[v _IOCBFbits IOCBFbits `VES364  1 e 1 @8010 ]
+[u S391 . 1 `S382 1 . 1 0 ]
+[v _IOCBFbits IOCBFbits `VES391  1 e 1 @8010 ]
 "20509
 [v _ANSELC ANSELC `VEuc  1 e 1 @8014 ]
 "20571
 [v _WPUC WPUC `VEuc  1 e 1 @8015 ]
 "20633
 [v _ODCONC ODCONC `VEuc  1 e 1 @8016 ]
-[s S126 . 1 `uc 1 IOCCN0 1 0 :1:0 
+[s S132 . 1 `uc 1 IOCCN0 1 0 :1:0 
 `uc 1 IOCCN1 1 0 :1:1 
 `uc 1 IOCCN2 1 0 :1:2 
 `uc 1 IOCCN3 1 0 :1:3 
@@ -363,9 +381,9 @@ channel_FVR_BUF2 63
 `uc 1 IOCCN7 1 0 :1:7 
 ]
 "20898
-[u S135 . 1 `S126 1 . 1 0 ]
-[v _IOCCNbits IOCCNbits `VES135  1 e 1 @8020 ]
-[s S382 . 1 `uc 1 IOCCF0 1 0 :1:0 
+[u S141 . 1 `S132 1 . 1 0 ]
+[v _IOCCNbits IOCCNbits `VES141  1 e 1 @8020 ]
+[s S404 . 1 `uc 1 IOCCF0 1 0 :1:0 
 `uc 1 IOCCF1 1 0 :1:1 
 `uc 1 IOCCF2 1 0 :1:2 
 `uc 1 IOCCF3 1 0 :1:3 
@@ -375,33 +393,39 @@ channel_FVR_BUF2 63
 `uc 1 IOCCF7 1 0 :1:7 
 ]
 "20960
-[u S391 . 1 `S382 1 . 1 0 ]
-[v _IOCCFbits IOCCFbits `VES391  1 e 1 @8021 ]
+[u S413 . 1 `S404 1 . 1 0 ]
+[v _IOCCFbits IOCCFbits `VES413  1 e 1 @8021 ]
 "21005
 [v _WPUE WPUE `VEuc  1 e 1 @8037 ]
-"51 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\main.c
+"51 F:\repository_git\JDYZ\Common_Lock.X\main.c
 [v _gu8OldDoorState gu8OldDoorState `uc  1 e 1 0 ]
 "52
 [v _gu8DoorState gu8DoorState `uc  1 e 1 0 ]
 "53
 [v _gu8OperationState gu8OperationState `uc  1 e 1 0 ]
-"63 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/eusart.c
+"74 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
 [v _eusartTxHead eusartTxHead `uc  1 s 1 eusartTxHead ]
-"64
+"75
 [v _eusartTxTail eusartTxTail `uc  1 s 1 eusartTxTail ]
-"65
+"76
 [v _eusartTxBuffer eusartTxBuffer `[8]uc  1 s 8 eusartTxBuffer ]
-"66
+"77
 [v _eusartTxBufferRemaining eusartTxBufferRemaining `VEuc  1 e 1 0 ]
-"68
+"79
 [v _eusartRxHead eusartRxHead `uc  1 s 1 eusartRxHead ]
-"69
+"80
 [v _eusartRxTail eusartRxTail `uc  1 s 1 eusartRxTail ]
-"70
-[v _eusartRxBuffer eusartRxBuffer `[8]uc  1 s 8 eusartRxBuffer ]
-"71
+"81
+[v _eusartRxBuffer eusartRxBuffer `[20]uc  1 s 20 eusartRxBuffer ]
+"82
 [v _eusartRxCount eusartRxCount `VEuc  1 e 1 0 ]
-"11 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/filter.c
+"84
+[v _eusartTempRxBuffer eusartTempRxBuffer `[20]uc  1 s 20 eusartTempRxBuffer ]
+"85
+[v _eusartTempRxCount eusartTempRxCount `VEuc  1 e 1 0 ]
+"88
+[v _eusartFrameDone eusartFrameDone `uc  1 s 1 eusartFrameDone ]
+"11 F:\repository_git\JDYZ\Common_Lock.X\src/filter.c
 [v _Angle_t Angle_t `f  1 s 3 Angle_t ]
 "12
 [v _gu8DoorOpened gu8DoorOpened `uc  1 s 1 gu8DoorOpened ]
@@ -409,7 +433,7 @@ channel_FVR_BUF2 63
 [v _gu8DoorClosed gu8DoorClosed `uc  1 s 1 gu8DoorClosed ]
 "14
 [v _gu8ClosedCnt gu8ClosedCnt `uc  1 s 1 gu8ClosedCnt ]
-"27 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mpu_iic.c
+"27 F:\repository_git\JDYZ\Common_Lock.X\src/mpu_iic.c
 [v _Old_gyro Old_gyro `i  1 s 2 Old_gyro ]
 [v _New_gyro New_gyro `i  1 s 2 New_gyro ]
 [v _Frist_gyro Frist_gyro `i  1 s 2 Frist_gyro ]
@@ -417,63 +441,123 @@ channel_FVR_BUF2 63
 [v _Sam_cnt Sam_cnt `uc  1 s 1 Sam_cnt ]
 "29
 [v _G_Offset_X G_Offset_X `i  1 e 2 0 ]
-"59 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/tmr0.c
+"59 F:\repository_git\JDYZ\Common_Lock.X\src/tmr0.c
 [v _gu16RstTimCnt gu16RstTimCnt `ui  1 e 2 0 ]
 "60
 [v _gu16OpenTimCnt gu16OpenTimCnt `ui  1 e 2 0 ]
-"147
+"61
+[v _gu8UartTicnt gu8UartTicnt `uc  1 e 1 0 ]
+"155
 [v _result_gyro result_gyro `f  1 e 3 0 ]
-"148
+"156
 [v _sum sum `l  1 e 4 0 ]
 [v _sum_ sum_ `l  1 e 4 0 ]
-"149
+"157
 [v _filter_result filter_result `[2]f  1 e 6 0 ]
-"64 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\main.c
+"65 F:\repository_git\JDYZ\Common_Lock.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"209
+"239
 } 0
-"99 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/tmr0.c
+"237 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
+[v _UART_Task UART_Task `(v  1 e 1 0 ]
+{
+"255
+} 0
+"212
+[v _EUSART_Write_Frame EUSART_Write_Frame `(v  1 e 1 0 ]
+{
+[v EUSART_Write_Frame@cmd cmd `uc  1 a 1 wreg ]
+"214
+[v EUSART_Write_Frame@u8cnt u8cnt `uc  1 a 1 22 ]
+"212
+[v EUSART_Write_Frame@cmd cmd `uc  1 a 1 wreg ]
+"215
+[v EUSART_Write_Frame@cmd cmd `uc  1 a 1 21 ]
+"236
+} 0
+"137 F:\repository_git\JDYZ\Common_Lock.X\src/adc.c
+[v _ADC_Get_Vol ADC_Get_Vol `(uc  1 e 1 0 ]
+{
+"139
+[v ADC_Get_Vol@voldata voldata `ui  1 a 2 17 ]
+[v ADC_Get_Vol@adcdata adcdata `ui  1 a 2 15 ]
+"140
+[v ADC_Get_Vol@vol vol `uc  1 a 1 19 ]
+"153
+} 0
+"15 E:\Microchip\xc8\v2.00\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"5 E:\Microchip\xc8\v2.00\pic\sources\c90\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 11 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 13 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 6 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 8 ]
+"30
+} 0
+"114 F:\repository_git\JDYZ\Common_Lock.X\src/adc.c
+[v _ADC_GetConversion ADC_GetConversion `(ui  1 e 2 0 ]
+{
+[v ADC_GetConversion@channel channel `E7175  1 a 1 wreg ]
+[v ADC_GetConversion@channel channel `E7175  1 a 1 wreg ]
+"117
+[v ADC_GetConversion@channel channel `E7175  1 a 1 3 ]
+"134
+} 0
+"103 F:\repository_git\JDYZ\Common_Lock.X\src/tmr0.c
 [v _TMR0_StopTimer TMR0_StopTimer `(v  1 e 1 0 ]
 {
-"103
+"107
 } 0
-"93
+"94
 [v _TMR0_StartTimer TMR0_StartTimer `(v  1 e 1 0 ]
 {
-"97
+"101
 } 0
-"93 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mcc.c
+"93 F:\repository_git\JDYZ\Common_Lock.X\src/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "110
 } 0
-"69 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/tmr0.c
+"70 F:\repository_git\JDYZ\Common_Lock.X\src/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
-"91
+"92
 } 0
-"128 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mcc.c
+"128 F:\repository_git\JDYZ\Common_Lock.X\src/mcc.c
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
 "142
 } 0
-"50 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/gpio.c
+"50 F:\repository_git\JDYZ\Common_Lock.X\src/gpio.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
-"136
+"140
 } 0
-"112 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mcc.c
+"112 F:\repository_git\JDYZ\Common_Lock.X\src/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "126
 } 0
-"98 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/interrupt_manager.c
+"102 F:\repository_git\JDYZ\Common_Lock.X\src/interrupt_manager.c
 [v _Interrupt_Enable Interrupt_Enable `(v  1 e 1 0 ]
 {
-"102
+"106
 } 0
-"281 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mpu_iic.c
+"281 F:\repository_git\JDYZ\Common_Lock.X\src/mpu_iic.c
 [v _Init_MPU6500 Init_MPU6500 `(v  1 e 1 0 ]
 {
 "296
@@ -500,7 +584,7 @@ channel_FVR_BUF2 63
 [v ___aldiv@dividend dividend `l  1 p 4 4 ]
 "41
 } 0
-"191 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mpu_iic.c
+"191 F:\repository_git\JDYZ\Common_Lock.X\src/mpu_iic.c
 [v _Get6500Data Get6500Data `(i  1 e 2 0 ]
 {
 [v Get6500Data@REG_Address REG_Address `uc  1 a 1 wreg ]
@@ -539,15 +623,15 @@ channel_FVR_BUF2 63
 [v Com_Lock_IIC_Read_Data@ack ack `uc  1 a 1 1 ]
 "169
 } 0
-"144 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/eusart.c
+"185 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
 [v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
 {
 [v EUSART_Write@txData txData `uc  1 a 1 wreg ]
 [v EUSART_Write@txData txData `uc  1 a 1 wreg ]
 [v EUSART_Write@txData txData `uc  1 a 1 1 ]
-"169
+"210
 } 0
-"121 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mpu_iic.c
+"121 F:\repository_git\JDYZ\Common_Lock.X\src/mpu_iic.c
 [v _Com_Lock_MPU_Write_Command Com_Lock_MPU_Write_Command `(v  1 s 1 Com_Lock_MPU_Write_Command ]
 {
 [v Com_Lock_MPU_Write_Command@reg reg `uc  1 a 1 wreg ]
@@ -581,27 +665,39 @@ channel_FVR_BUF2 63
 {
 "51
 } 0
-"77 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/eusart.c
+"94 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 {
-"112
+"130
 } 0
-"148 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/gpio.c
+"64 F:\repository_git\JDYZ\Common_Lock.X\src/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"85
+} 0
+"152 F:\repository_git\JDYZ\Common_Lock.X\src/gpio.c
 [v _ReadTouchKeyPIN ReadTouchKeyPIN `(uc  1 e 1 0 ]
 {
-"159
+"163
 } 0
-"139
+"143
 [v _ReadRstPIN ReadRstPIN `(uc  1 e 1 0 ]
 {
-"146
+"150
 } 0
-"115 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/eusart.c
-[v _EUSART_Enable_WakeUp EUSART_Enable_WakeUp `(v  1 e 1 0 ]
+"138 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
+[v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
 {
-"118
+"140
+[v EUSART_Read@bitChk bitChk `uc  1 a 1 1 ]
+"183
 } 0
-"107 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/filter.c
+"257
+[v _Clear_FrameDone Clear_FrameDone `(v  1 e 1 0 ]
+{
+"261
+} 0
+"107 F:\repository_git\JDYZ\Common_Lock.X\src/filter.c
 [v _ClearAngle ClearAngle `(v  1 e 1 0 ]
 {
 "111
@@ -623,25 +719,25 @@ channel_FVR_BUF2 63
 [v ___ftge@ff2 ff2 `f  1 p 3 3 ]
 "13
 } 0
-"57 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/interrupt_manager.c
+"58 F:\repository_git\JDYZ\Common_Lock.X\src/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
-"94
+"98
 } 0
-"93 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/tmr0.c
+"94 F:\repository_git\JDYZ\Common_Lock.X\src/tmr0.c
 [v i1_TMR0_StartTimer TMR0_StartTimer `(v  1 e 1 0 ]
 {
-"97
+"101
 } 0
-"127
+"131
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
-"144
+"152
 } 0
-"150
+"158
 [v _TMR0_Task TMR0_Task `(v  1 e 1 0 ]
 {
-"163
+"171
 } 0
 "44 E:\Microchip\xc8\v2.00\pic\sources\c90\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
@@ -655,7 +751,7 @@ channel_FVR_BUF2 63
 [v ___fttol@f1 f1 `f  1 p 3 0 ]
 "73
 } 0
-"233 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/mpu_iic.c
+"233 F:\repository_git\JDYZ\Common_Lock.X\src/mpu_iic.c
 [v _Mpu6500GyroAngle Mpu6500GyroAngle `(f  1 e 3 0 ]
 {
 [v Mpu6500GyroAngle@dir dir `c  1 a 1 wreg ]
@@ -720,13 +816,13 @@ channel_FVR_BUF2 63
 [v i1Com_Lock_IIC_Read_Data@ack ack `uc  1 a 1 1 ]
 "169
 } 0
-"144 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/eusart.c
+"185 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
 [v i1_EUSART_Write EUSART_Write `(v  1 e 1 0 ]
 {
 [v i1EUSART_Write@txData txData `uc  1 a 1 wreg ]
 [v i1EUSART_Write@txData txData `uc  1 a 1 wreg ]
 [v i1EUSART_Write@txData txData `uc  1 a 1 1 ]
-"169
+"210
 } 0
 "4 E:\Microchip\xc8\v2.00\pic\sources\c90\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
@@ -763,7 +859,7 @@ channel_FVR_BUF2 63
 [v ___awtoft@c c `i  1 p 2 8 ]
 "42
 } 0
-"91 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/filter.c
+"91 F:\repository_git\JDYZ\Common_Lock.X\src/filter.c
 [v _AngleCalcu AngleCalcu `(v  1 e 1 0 ]
 {
 [v AngleCalcu@angle_m angle_m `f  1 p 3 23 ]
@@ -812,15 +908,15 @@ channel_FVR_BUF2 63
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
 } 0
-"171 E:\Project\Cypress\V2\JDYZ\Common_Lock.X\src/eusart.c
+"265 F:\repository_git\JDYZ\Common_Lock.X\src/eusart.c
 [v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
 {
-"188
+"282
 } 0
-"190
+"284
 [v _EUSART_Receive_ISR EUSART_Receive_ISR `(v  1 e 1 0 ]
 {
-"192
+"286
 [v EUSART_Receive_ISR@dumread dumread `uc  1 a 1 1 ]
-"215
+"309
 } 0

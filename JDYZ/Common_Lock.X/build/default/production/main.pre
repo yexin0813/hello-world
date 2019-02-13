@@ -1,17 +1,17 @@
 
 # 1 "main.c"
 
-# 18 "../../../../../Microchip/xc8/v2.00/pic/include\xc.h"
+# 18 "E:\Microchip\xc8\v2.00\pic\include\xc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\xc8debug.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 108 "../../../../../Microchip/xc8/v2.00/pic/include\pic16f15354.h"
+# 108 "E:\Microchip\xc8\v2.00\pic\include\pic16f15354.h"
 extern volatile unsigned char INDF0 __at(0x000);
 
 asm("INDF0 equ 00h");
@@ -12494,7 +12494,7 @@ extern volatile __bit nWRITE1 __at(0xC7A);
 extern volatile __bit nWRITE2 __at(0xCCA);
 
 
-# 30 "../../../../../Microchip/xc8/v2.00/pic/include\pic.h"
+# 30 "E:\Microchip\xc8\v2.00\pic\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
@@ -12517,7 +12517,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdint.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdint.h"
 typedef signed char int8_t;
 
 # 20
@@ -12603,7 +12603,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
 # 69 "inc/mcc.h"
@@ -12639,7 +12639,7 @@ extern void PIN_MANAGER_Initialize(void);
 extern uint8_t ReadRstPIN(void);
 extern uint8_t ReadTouchKeyPIN(void);
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
 # 76 "inc/eusart.h"
@@ -12662,8 +12662,10 @@ void EUSART_Transmit_ISR(void);
 void EUSART_Receive_ISR(void);
 
 void EUSART_Enable_WakeUp(void);
+void Clear_FrameDone(void);
+void UART_Task(void);
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
 # 71 "inc/adc.h"
@@ -12704,8 +12706,9 @@ adc_result_t ADC_GetConversionResult(void);
 
 # 289
 adc_result_t ADC_GetConversion(adc_channel_t channel);
+uint8_t ADC_Get_Vol(void);
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
 # 21 "inc/../inc/filter.h"
@@ -12719,14 +12722,16 @@ void Init_MPU6500(void);
 void Test_MPU_6500(void);
 float Mpu6500GyroAngle(int8_t dir);
 int8_t Test_Sleep_Mpu6500(void);
+void PowerDown_Mpu6500(void);
+void WakeUp_Mpu6500(void);
 
 # 110 "inc/interrupt_manager.h"
 void interrupt INTERRUPT_InterruptManager(void);
 
-# 137
+# 139
 void Interrupt_Enable(void);
 
-# 13 "../../../../../Microchip/xc8/v2.00/pic/include/c90\stdbool.h"
+# 13 "E:\Microchip\xc8\v2.00\pic\include\c90\stdbool.h"
 typedef unsigned char bool;
 
 # 104 "inc/tmr0.h"
@@ -12761,8 +12766,9 @@ uint8_t gu8OperationState = 0x00;
 extern uint16_t gu16RstTimCnt;
 extern uint16_t gu16OpenTimCnt;
 extern uint16_t gu16OpenTimCnt;
+extern uint8_t gu8UartTicnt;
 
-# 64
+# 65
 void main(void)
 {
 
@@ -12777,11 +12783,9 @@ case 1:
 
 if(gu8OperationState == 0x00)
 {
-EUSART_Write(0x22);
-EUSART_Write(0x33);
 TMR0_StopTimer();
-EUSART_Enable_WakeUp();
-asm("sleep");
+
+# 90
 }
 gu8OldDoorState = 1;
 gu8DoorState = 2;
@@ -12860,6 +12864,29 @@ gu8DoorState = 0;
 gu8OperationState &= 0xFC;
 }
 }
+if(gu8OperationState&0x10)
+{
+if(EUSART_Read())
+{
+UART_Task();
+Clear_FrameDone();
+gu8UartTicnt = 0;
+EUSART_Write(0x22);
+EUSART_Write(0x99);
+gu8OperationState &=~0x10;
+}
+else
+{
+if(gu8UartTicnt >= 10)
+{
+gu8UartTicnt = 0;
+Clear_FrameDone();
+
+
+gu8OperationState &=~0x10;
+}
+}
+}
 if(gu8OperationState == 0x00)
 {
 if(gu8OldDoorState == 1)
@@ -12874,7 +12901,7 @@ default:
 break;
 }
 
-# 208
+# 238
 }
 }
 

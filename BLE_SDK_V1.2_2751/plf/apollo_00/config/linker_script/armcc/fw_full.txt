@@ -1,0 +1,103 @@
+#! armcc -E
+
+#define ROM_BASE            0x00000000
+#define ROM_CODE_ADDR_BASE 	0x00001a00
+#define ROM_LIMIT           0x00020000
+#define ROM_CODE_SIZE       (ROM_LIMIT-ROM_CODE_ADDR_BASE)
+#define RAM_ADDR_BASE      	0x00100000
+#define EM_START            0x00128000
+#define EM_END              0x00129dc6
+#define ROM_CODE_ZI_BASE    0x0012f5cc
+#define RAM_LIMIT           0x00130000
+#define DUMMY_ADDR          0xb0000000
+#define NVDS_MAX_SIZE       0x400
+#define RTT_SIZE            0x78
+LR_ROM ROM_CODE_ADDR_BASE PROTECTED ROM_CODE_SIZE  {    ; load region size_region
+  ER_ROM +0  { 
+   *(:gdef:__aeabi_uidiv) *(:gdef:__aeabi_idiv) *(:gdef:__aeabi_uldivmod) *(:gdef:rand) 
+   *(:gdef:__aeabi_memcpy) *(:gdef:__aeabi_memset) *(:gdef:memcmp) *(:gdef:strcpy) 
+   *(:gdef:__aeabi_llsl) *(:gdef:__aeabi_llsr) 
+   *(:gdef:__ARM_common_switch8)
+;    idiv.o(+RO) uidiv.o(+RO) uldiv.o(+RO) llshl.o(+RO) llushr.o(+RO)                                      
+;    memcmp.o(+RO) memcpya.o(+RO) memseta.o(+RO) strcpy.o(+RO)
+;    rand.o(+RO) 
+    
+;    ahi*(+RO)
+;    gap*(+RO)
+;    gatt*(+RO)
+;    att*(+RO)
+;    smp*(+RO)
+;    l2c*(+RO)
+;    hci*(+RO)
+;    ll*(+RO)
+;    ea.o(+RO)
+;    em_buf.o(+RO)
+;    h4tl.o(+RO)
+;    ke*(+RO)
+;    co_*(+RO)
+;    rwble*(+RO)
+    rom*(+RO)
+  }
+  RW_ZI_ROM ROM_CODE_ZI_BASE {
+    rand.o(+RW,+ZI)          
+    rom*(+RW,+ZI)                                     
+;   ahi*(+RW,+ZI)
+;    gap*(+RW,+ZI)
+;    gatt*(+RW,+ZI)
+;    att*(+RW,+ZI)
+;    smp*(+RW,+ZI)
+;    l2c*(+RW,+ZI)
+;    hci*(+RW,+ZI)
+;    ll*(+RW,+ZI)
+;    ea.o(+RW,+ZI)
+;    em_buf.o(+RW,+ZI)
+;    h4tl.o(+RW,+ZI)
+;    ke*(+RW,+ZI)
+;    co_*(+RW,+ZI)
+;    rwble*(+RW,+ZI) 
+  }
+}
+ScatterAssert(ImageLimit(RW_ZI_ROM)<=RAM_LIMIT)
+LR_RAM1 RAM_ADDR_BASE ALIGN 0x80{
+    ISR_VECTOR +0 {
+        *(RESET, +First)
+        *(jump_table_area)
+    }
+    CODE_DATA_BSS +0
+    {
+        *(+RO)
+        *(+RW)
+        *(+ZI)
+    }
+    HEAP_STACK +0 UNINIT
+    {
+      *(HEAP)
+      *(STACK)
+    } 
+  ScatterAssert(ImageLimit(HEAP_STACK)<=EM_START)
+}
+LR_RAM3 AlignExpr(EM_END,0x4) ALIGN 0x4
+{
+    RWIP_ENV +0
+    {
+        rwip.o(+ZI)
+    }
+    BOOT_PARAMS +0 UNINIT{
+        *(boot_tunnel)
+    }
+    RAM_UNLOADED +0 EMPTY 12
+	{
+	}
+    ScatterAssert(ImageLimit(RAM_UNLOADED)<=ROM_CODE_ZI_BASE)
+}
+LR_RAM2 DUMMY_ADDR
+{
+  NVDS_AREA +0 PADVALUE 0xffffffff 
+  {
+    *(nvds_area)
+  }
+}
+
+
+
+

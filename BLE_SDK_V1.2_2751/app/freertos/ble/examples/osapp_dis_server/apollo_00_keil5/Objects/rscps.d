@@ -1,0 +1,13 @@
+.\objects\rscps.o: ..\..\..\..\..\..\ip\ble\profiles\rscp\rscps\src\rscps.c
+.\objects\rscps.o: ..\..\..\..\..\..\modules\rwip\api\rwip_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\plf\bx_config.h
+.\objects\rscps.o: ..\..\osapp_dis_server\bx_app_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\ip\bx_ip_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\plf\apollo_00\bx_sys_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\plf\apollo_00\bx_pcb_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\ip\ble\ll\src\rwble\rwble_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\modules\rwip\api\rwip_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\ip\ble\hl\inc\rwble_hl_config.h
+.\objects\rscps.o: ..\..\..\..\..\..\plf\apollo_00\src\jmp_table\jump_table.h
+.\objects\rscps.o: ..\..\..\..\..\..\ip\ble\hl\api\rwble_hl_error.h
+.\objects\rscps.o: ..\..\..\..\..\..\ip\ble\hl\inc\rwprf_config.h

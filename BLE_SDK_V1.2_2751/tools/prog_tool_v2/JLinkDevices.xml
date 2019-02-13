@@ -1,0 +1,10 @@
+<DataBase>
+  <Device>
+    <ChipInfo Vendor="Apollo" Name="Apollo_00_3V3" Core="JLINK_CORE_CORTEX_M0" WorkRAMAddr="0x00100000" WorkRAMSize="0x28000"/>
+    <FlashBankInfo Name="QSPI Flash" BaseAddr="0xa0000000" MaxSize="0x00800000" Loader="Apollo/Template_CortexM_3V3.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+  </Device>
+  <Device>
+    <ChipInfo Vendor="Apollo" Name="Apollo_00_1V8" Core="JLINK_CORE_CORTEX_M0" WorkRAMAddr="0x00100000" WorkRAMSize="0x28000"/>
+    <FlashBankInfo Name="QSPI Flash" BaseAddr="0xa0000000" MaxSize="0x00800000" Loader="Apollo/Template_CortexM_1V8.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+  </Device>
+</DataBase>

@@ -1,0 +1,16 @@
+#! armcc -E
+#include "..\boot_memory_map.h"
+
+
+LOAD_ROM BOOT_ROM_BASE BOOT_ROM_LIMIT{
+	EXEC_ROM BOOT_ROM_BASE{
+		*(RESET,+First)
+		*(+RO)
+	}
+	EXEC_RW_ZI_STACK BOOT_CODE_DATA_RAM_BASE{
+		*(+RW,+ZI)
+		*(STACK)
+	}
+
+}
+ScatterAssert(ImageLimit(EXEC_RW_ZI_STACK)<RAM_LIMIT)

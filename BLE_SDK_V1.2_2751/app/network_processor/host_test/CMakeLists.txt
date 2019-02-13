@@ -1,0 +1,1 @@
+app_target_build(host_test main.c)

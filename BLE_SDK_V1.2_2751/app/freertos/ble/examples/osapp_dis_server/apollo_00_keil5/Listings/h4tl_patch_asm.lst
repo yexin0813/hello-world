@@ -1,0 +1,74 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8
+    2 00000000                 THUMB
+    3 00000000                 AREA             |.text|, CODE, READONLY
+    4 00000000         
+    5 00000000         H4TL_PATCH
+                               PROC
+    6 00000000                 EXPORT           H4TL_PATCH
+    7 00000000                 IMPORT           h4tl_patch_c
+    8 00000000 4620            MOV              r0,r4
+    9 00000002 4671            MOV              r1,lr
+   10 00000004 F7FF FFFE       BL               h4tl_patch_c
+   11 00000008 4601            MOV              r1,r0
+   12 0000000A 7DA0            LDRB             r0,[r4,#0x16]
+   13 0000000C 4708            BX               r1
+   14 0000000E                 ENDP
+   15 0000000E         
+   16 0000000E                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
+work --depend=.\objects\h4tl_patch_asm.d -o.\objects\h4tl_patch_asm.o -INone -I
+.\RTE\_BLE -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM0plus\Include 
+-ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --predefine="__U
+VISION_VERSION SETA 526" --predefine="ARMCM0P SETA 1" --list=.\listings\h4tl_pa
+tch_asm.lst ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4tl_patch_asm
+.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 3 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_patch_asm.s
+   Uses
+      None
+Comment: .text unused
+H4TL_PATCH 00000000
+
+Symbol: H4TL_PATCH
+   Definitions
+      At line 5 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_patch_asm.s
+   Uses
+      At line 6 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_patch_asm.s
+Comment: H4TL_PATCH used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+h4tl_patch_c 00000000
+
+Symbol: h4tl_patch_c
+   Definitions
+      At line 7 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h4
+tl_patch_asm.s
+   Uses
+      At line 10 in file ..\..\..\..\..\..\plf\apollo_00\src\patch_list\armcc\h
+4tl_patch_asm.s
+Comment: h4tl_patch_c used once
+1 symbol
+336 symbols in table

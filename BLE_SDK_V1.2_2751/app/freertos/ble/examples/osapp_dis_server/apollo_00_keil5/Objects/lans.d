@@ -1,0 +1,13 @@
+.\objects\lans.o: ..\..\..\..\..\..\ip\ble\profiles\lan\lans\src\lans.c
+.\objects\lans.o: ..\..\..\..\..\..\modules\rwip\api\rwip_config.h
+.\objects\lans.o: ..\..\..\..\..\..\plf\bx_config.h
+.\objects\lans.o: ..\..\osapp_dis_server\bx_app_config.h
+.\objects\lans.o: ..\..\..\..\..\..\ip\bx_ip_config.h
+.\objects\lans.o: ..\..\..\..\..\..\plf\apollo_00\bx_sys_config.h
+.\objects\lans.o: ..\..\..\..\..\..\plf\apollo_00\bx_pcb_config.h
+.\objects\lans.o: ..\..\..\..\..\..\ip\ble\ll\src\rwble\rwble_config.h
+.\objects\lans.o: ..\..\..\..\..\..\modules\rwip\api\rwip_config.h
+.\objects\lans.o: ..\..\..\..\..\..\ip\ble\hl\inc\rwble_hl_config.h
+.\objects\lans.o: ..\..\..\..\..\..\plf\apollo_00\src\jmp_table\jump_table.h
+.\objects\lans.o: ..\..\..\..\..\..\ip\ble\hl\api\rwble_hl_error.h
+.\objects\lans.o: ..\..\..\..\..\..\ip\ble\hl\inc\rwprf_config.h

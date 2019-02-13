@@ -1,0 +1,65 @@
+
+
+	PRESERVE8
+	THUMB
+	AREA    |PATCH_SECTION|, CODE, READONLY
+
+
+PATCH1 PROC
+	EXPORT PATCH1
+	IMPORT patch_test1
+	BL patch_test1
+	POP {pc}
+	ENDP
+
+PATCH2 PROC
+	EXPORT PATCH2
+	IMPORT patch_test2
+	BL patch_test2
+	POP {pc}
+	ENDP
+
+PATCH3 PROC
+	EXPORT PATCH3
+	IMPORT patch_test3
+	BL patch_test3
+	POP {pc}
+	ENDP
+
+PATCH4 PROC
+	EXPORT PATCH4
+	IMPORT patch_test4
+	BL patch_test4
+	POP {pc}
+	ENDP
+
+PATCH5 PROC
+	EXPORT PATCH5
+	IMPORT patch_test5
+	BL patch_test5
+	POP {pc}
+	ENDP
+
+PATCH6 PROC
+	EXPORT PATCH6
+	IMPORT patch_test6
+	BL patch_test6
+	POP {pc}
+	ENDP
+
+PATCH7 PROC
+	EXPORT PATCH7
+	IMPORT patch_test7
+	BL patch_test7
+	POP {pc}
+	ENDP
+
+PATCH8 PROC
+	EXPORT PATCH8
+	IMPORT patch_test8
+	BL patch_test8
+	POP {pc}
+	ENDP
+
+
+	END

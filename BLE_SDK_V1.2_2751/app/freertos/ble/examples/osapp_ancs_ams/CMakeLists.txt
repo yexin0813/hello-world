@@ -1,0 +1,2 @@
+
+rtos_app_target_build(osapp_ancs_ams_demo osapp_ancs_ams_demo.c)

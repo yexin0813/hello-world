@@ -1,0 +1,18 @@
+add_subdirectory(app_uart)
+add_subdirectory(app_hwecc)
+add_subdirectory(led)
+add_subdirectory(flash)
+add_subdirectory(flash_cache)
+add_subdirectory(ssi)
+add_subdirectory(rtc)
+add_subdirectory(app_dmac)
+add_subdirectory(sleep_recovery)
+add_subdirectory(app_iic)
+add_subdirectory(app_adc)
+add_subdirectory(app_timer)
+add_subdirectory(app_pwm)
+add_subdirectory(app_gpio)
+add_subdirectory(test)
+target_include_directories(usr_inc
+INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
+)

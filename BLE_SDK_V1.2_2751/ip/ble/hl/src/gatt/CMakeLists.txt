@@ -1,0 +1,5 @@
+add_subdirectory(attm)
+add_subdirectory(attc)
+add_subdirectory(atts)
+add_subdirectory(gattc)
+add_subdirectory(gattm)

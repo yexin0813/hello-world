@@ -1,0 +1,3 @@
+
+
+rtos_app_target_build(osapp_dis_server osapp_dis_server.c)

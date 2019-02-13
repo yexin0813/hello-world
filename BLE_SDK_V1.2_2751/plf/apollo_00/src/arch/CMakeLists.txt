@@ -1,0 +1,15 @@
+set(SRC
+${CMAKE_CURRENT_SOURCE_DIR}/arch_init.c
+${CMAKE_CURRENT_SOURCE_DIR}/boot/${CMAKE_C_COMPILER_ID}/startup_apollo_00.s
+)
+add_sources(PLF_00_SRCS ${SRC})
+
+set(INC
+${CMAKE_CURRENT_SOURCE_DIR}
+${CMAKE_CURRENT_SOURCE_DIR}/boot/${CMAKE_C_COMPILER_ID}
+${CMAKE_CURRENT_SOURCE_DIR}/compiler/${CMAKE_C_COMPILER_ID}
+${CMAKE_CURRENT_SOURCE_DIR}/ll/
+)
+target_include_directories(inc_00
+INTERFACE ${INC}
+)

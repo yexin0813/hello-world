@@ -1,0 +1,16 @@
+#! armcc -E
+#include "..\boot_memory_map.h"
+LOAD_SECTION UART_DOWNLOAD_EXEC_BASE - BOOT_HEADER_SIZE
+{
+	BOOT_HEADER_SECTION +0
+	{
+		*(boot_header_area,+First)
+	}
+    EXEC_SECTION +0
+    {
+        *(RESET,+First)
+        *(+RO,+RW,+ZI)
+    }
+    
+}
+ScatterAssert(ImageLimit(EXEC_SECTION)<BOOT_CODE_DATA_RAM_BASE)

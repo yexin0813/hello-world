@@ -1,0 +1,15 @@
+set(SRC
+
+${CMAKE_CURRENT_SOURCE_DIR}/RTT/SEGGER_RTT.c
+${CMAKE_CURRENT_SOURCE_DIR}/RTT/SEGGER_RTT_printf.c
+${CMAKE_CURRENT_SOURCE_DIR}/sim_log.c
+)
+
+add_sources(USR_SRCS ${SRC})
+set(INC
+${CMAKE_CURRENT_SOURCE_DIR}/.
+${CMAKE_CURRENT_SOURCE_DIR}/RTT
+)
+target_include_directories(usr_inc
+INTERFACE ${INC}
+)

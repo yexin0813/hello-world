@@ -1,0 +1,15 @@
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\peripheral\microarray\speaker\common_lock_speaker.c
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\peripheral\microarray\speaker\common_lock_speaker.h
+.\objects\common_lock_speaker.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\common_lock_speaker.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\common_lock_speaker.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\common_lock_speaker.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\apollo_00\src\sys_integration\sysctrl\io_ctrl.h
+.\objects\common_lock_speaker.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\peripheral\microarray\timer\m_timer.h
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\apollo_00\src\arch\plf.h
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\bx_config.h
+.\objects\common_lock_speaker.o: ..\..\osapp_dis_server\bx_app_config.h
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\ip\bx_ip_config.h
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\apollo_00\bx_sys_config.h
+.\objects\common_lock_speaker.o: ..\..\..\..\..\..\plf\apollo_00\bx_pcb_config.h

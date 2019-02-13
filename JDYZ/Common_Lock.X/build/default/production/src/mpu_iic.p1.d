@@ -1,23 +1,7 @@
  build/default/production/src/mpu_iic.d  \
  build/default/production/src/mpu_iic.p1:  \
  src/mpu_iic.c  \
-../../../../../Microchip/xc8/v2.00/pic/include/language_support.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/pic.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/__null.h  \
 src/../inc/mpu_iic.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/xc.h  \
 src/../inc/mcc.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/__size_t.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/eeprom_routines.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/c90/stdint.h  \
 src/../inc/../inc/filter.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/c90/stdlib.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/__at.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/__unsupported.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/htc.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/pic_chip_select.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/c90/math.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/c90/xc8debug.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/pic16f15354.h  \
-../../../../../Microchip/xc8/v2.00/pic/include/c90/stdbool.h  \
 src/../inc/eusart.h 

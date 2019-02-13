@@ -1,0 +1,11 @@
+.\objects\nvds_tag.o: ..\..\..\..\..\..\modules\nvds\src\nvds_tag.c
+.\objects\nvds_tag.o: ..\..\..\..\..\..\plf\bx_config.h
+.\objects\nvds_tag.o: ..\..\osapp_dis_server\bx_app_config.h
+.\objects\nvds_tag.o: ..\..\..\..\..\..\ip\bx_ip_config.h
+.\objects\nvds_tag.o: ..\..\..\..\..\..\plf\apollo_00\bx_sys_config.h
+.\objects\nvds_tag.o: ..\..\..\..\..\..\plf\apollo_00\bx_pcb_config.h
+.\objects\nvds_tag.o: ..\..\..\..\..\..\modules\nvds\api\nvds_tag.h
+.\objects\nvds_tag.o: ..\..\..\..\..\..\modules\nvds\api\nvds_typedef.h
+.\objects\nvds_tag.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\nvds_tag.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\nvds_tag.o: ..\..\..\..\..\..\plf\inc\compiler_flag.h

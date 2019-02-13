@@ -1,0 +1,8 @@
+SECTIONS
+{
+    boot_ram 0x12e000 - 0x10 : 
+    { 
+        *(boot_header_area)
+		*(.text) *(.data) *(.bss)
+    }
+}

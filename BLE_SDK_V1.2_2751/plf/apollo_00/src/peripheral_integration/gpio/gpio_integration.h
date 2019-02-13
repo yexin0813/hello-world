@@ -1,0 +1,62 @@
+/*
+ * gpio_integration.h
+ *
+ *  Created on: 2018Äê7ÔÂ13ÈÕ
+ *      Author: mingzhou
+ */
+
+#ifndef GPIO_INTEGRATION_H_
+#define GPIO_INTEGRATION_H_
+
+#define GPIO_PWIDTH 30
+#define GPIO_MASK 31
+
+enum GPIO_ENV_DIR_FIELD
+{
+    GPIO_ENV_DIR_MASK = 1,
+    GPIO_ENV_DIR_POS = 0
+};
+
+enum GPIO_ENV_LEVEL_EDGE_FIELD
+{
+    GPIO_ENV_LEVEL_EDGE_MASK = 2,
+    GPIO_ENV_LEVEL_POS = 1
+};
+
+enum GPIO_ENV_PLY_FIELD
+{
+    GPIO_ENV_PLY_MASK = 4,
+    GPIO_ENV_PLY_POS = 2
+};
+
+enum GPIO_ENV_DEB_FIELD
+{
+    GPIO_ENV_DEB_MASK = 8,
+    GPIO_ENV_DEB_POS = 3
+};
+
+enum GPIO_ENV_PULLUP_FIELD
+{
+    GPIO_ENV_PULLUP_MASK = 0x10,
+    GPIO_ENV_PULLUP_POS = 4
+};
+
+enum GPIO_ENV_VAL_FIELD
+{
+    GPIO_ENV_VAL_FIELD = 0x20,
+    GPIO_ENV_VAL_POS = 5
+};
+
+enum GPIO_ENV_IRQ_MASK_FIELD
+{
+    GPIO_ENV_IRQ_MASK_FIELD = 0x40,
+    GPIO_ENV_IRQ_MASK_POS = 6
+};
+
+enum GPIO_ENV_IRQ_EN_FIELD
+{
+    GPIO_ENV_IRQ_EN_MASK = 0x80,
+    GPIO_ENV_IRQ_EN_POS = 7
+};
+
+#endif /* GPIO_INTEGRATION_H_ */

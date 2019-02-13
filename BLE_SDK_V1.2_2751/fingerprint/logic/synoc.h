@@ -1,0 +1,121 @@
+/*
+ * synoc.h
+ *
+ *  Created on: 2017年10月23日
+ *      Author: li
+ */
+
+#ifndef SYNOC_H_
+#define SYNOC_H_
+
+#include"system.h"
+
+
+
+
+
+//帧描述   帧头(2 Byte)  + 模块地址(0xffffffff) +  包标识(1Byte) + 包长度(2Bytes) + data(n Byte) + 校验(1Byte)
+#define SYNOC_FRAME_START     0xEF01
+#define SYNOC_FRAME_PID       0x06
+#define SYNOC_FRAME_STA_LEN   9
+#define SYNOC_FRAME_LEN_HIGH  0x07
+#define SYNOC_FRAME_LEN_LOW   0x08
+#define SYNOC_FRAME_CRC 2
+#define SYNOC_FRAME_MOST_LEN 256
+
+//标识
+#define SYNOC_PID_COMMAND    0x01   //命令包
+#define SYNOC_PID_DATA       0x02   //数据包
+#define SYNOC_PID_LAST_DATA  0x08   //最后一包数据包
+#define SYNOC_PID_ACK        0x07   //应答包
+
+
+//
+#define SYNOC_PS_OK                0x00
+#define SYNOC_PS_COMM_ERR          0x01
+#define SYNOC_PS_NO_FINGER         0x02
+#define SYNOC_PS_GET_IMG_ERR       0x03
+#define SYNOC_PS_FP_TOO_DRY        0x04
+#define SYNOC_PS_FP_TOO_WET        0x05
+#define SYNOC_PS_FP_DISORDER       0x06
+#define SYNOC_PS_LITTLE_FEATURE    0x07
+#define SYNOC_PS_NOT_MATCH         0x08
+#define SYNOC_PS_NOT_SEARCHED      0x09
+#define SYNOC_PS_MERGE_ERR         0x0a
+#define SYNOC_PS_ADDRESS_OVER      0x0b
+#define SYNOC_PS_READ_ERR          0x0c
+#define SYNOC_PS_UP_TEMP_ERR       0x0d
+#define SYNOC_PS_RECV_ERR          0x0e
+#define SYNOC_PS_UP_IMG_ERR        0x0f
+#define SYNOC_PS_DEL_TEMP_ERR      0x10
+#define SYNOC_PS_CLEAR_TEMP_ERR    0x11
+#define SYNOC_PS_SLEEP_ERR         0x12
+#define SYNOC_PS_INVALID_PASSWORD  0x13
+#define SYNOC_PS_RESET_ERR         0x14
+#define SYNOC_PS_INVALID_IMAGE     0x15
+#define SYNOC_PS_HANGOVER_UNREMOVE 0X17
+#define SYNOC_PS_FLASH_ERR         0x18
+#define SYNOC_PS_INVALID_REG       0x1a
+#define SYNOC_PS_ENROLL_ERR        0x1e
+#define SYNOC_PS_LIB_FULL_ERR      0x1f
+#define SYNOC_PS_DEVICE_ADDR_ERR   0x20
+#define SYNOC_PS_MUST_VERIFY_PWD   0x21
+#define SYNOC_PS_ID_EXIST          0x29
+
+
+
+typedef enum
+{
+	CMD_GET_IMAGE=0x01,
+	CMD_GEN_CHAR=0x02,
+	CMD_MATCH=0x03,
+	CMD_SEARCH=0x04,
+	CMD_REG_MODEL=0x05,
+	CMD_STORE_CHAR=0x06,
+	CMD_LOAD_CHAR=0x07,
+	CMD_UPLOAD_CHAR=0x08,
+	CMD_DOWNLOAD_CHAR=0x09,
+	CMD_UPLOAD_IMAGE=0x0a,
+	CMD_DOWNLOAD_IMAGE=0x0b,
+	CMD_DELETE_CHAR=0x0c,
+	CMD_EMPTY=0x0d,
+	CMD_SET_SYS_PAPR=0x0e,
+	CMD_READ_SYS_PARA=0x0f,
+	CMD_ENROLL=0x10,
+	CMD_IDENTIFY=0x11,
+	CMD_SET_PWD=0x12,
+	CMD_VFY_PWD=0x13,
+	CMD_GET_RANDOM=0x14,
+	CMD_SET_CHIP_ADDR=0x15,
+	CMD_READ_INF_PAGE=0x16,
+	CMD_PORT_CONTROL=0x17,
+	CMD_WRITE_NOTEPAD=0x18,
+	CMD_READ_NOTEPAD=0x19,
+	CMD_BURNCODE=0x1a,
+	CMD_HIGHSPEED_SEARCH=0x1b,
+	CMD_GEN_BIN_IMAGE=0x1c,
+	CMD_VALID_TEMPLTENUM=0x1d,
+	CMD_USER_COMMAND=0x1e,
+	CMD_READ_INDEX_TABLE=0x1f,
+	CMD_UP_LUM_COMMAND=0x24,
+	CMD_GET_TESTIMAGE=0x25,
+	CMD_UP_TESTIMAGE=0x26,
+	CMD_GET_IMAGE_DIRECT=0x27,
+	CMD_GET_ENROLL_IMAGE=0x29,
+
+	CMD_SLEEP=0x33,
+
+	//for Voc Lock
+	CMD_GET_ON_LIGHT=0x50,
+	CMD_GET_OFF_LIGHT=0x51,
+	CMD_GET_IMAGE_FOR_OPTICAL=0x52,
+
+	CMD_MAX
+}_SynocCmd;
+
+
+void synocFsmTask(S32 ch);
+
+
+
+#endif /* SYNOC_H_ */
