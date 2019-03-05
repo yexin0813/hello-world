@@ -120,4 +120,11 @@
 .\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\app_pwm\app_pwm.h
 .\objects\task_init.o: ..\..\..\..\..\..\plf\apollo_00\src\peripheral_integration\pwm\pwm_integration.h
 .\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\app_pwm\reg_pwm.h
+.\objects\task_init.o: ..\..\..\..\..\microarray\Hardware.h
+.\objects\task_init.o: ..\..\..\..\..\microarray\MaTypes.h
+.\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\microarray\mfrc\common_lock_mfrc.h
 .\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\microarray\speaker\common_lock_speaker.h
+.\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\microarray\oled\common_lock_oled.h
+.\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\microarray\led\common_lock_led.h
+.\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\microarray\touch\common_lock_bs81x.h
+.\objects\task_init.o: ..\..\..\..\..\..\plf\peripheral\microarray\sensor3403\common_lock_sensor3403.h

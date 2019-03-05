@@ -1,0 +1,16 @@
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\peripheral\microarray\oled\common_lock_oled.c
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\peripheral\microarray\oled\common_lock_oled.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\peripheral\microarray\mfrc\common_lock_mfrc.h
+.\objects\common_lock_oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\common_lock_oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\common_lock_oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\common_lock_oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\apollo_00\src\sys_integration\sysctrl\io_ctrl.h
+.\objects\common_lock_oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\peripheral\microarray\timer\m_timer.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\apollo_00\src\arch\plf.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\bx_config.h
+.\objects\common_lock_oled.o: ..\..\osapp_dis_server\bx_app_config.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\ip\bx_ip_config.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\apollo_00\bx_sys_config.h
+.\objects\common_lock_oled.o: ..\..\..\..\..\..\plf\apollo_00\bx_pcb_config.h

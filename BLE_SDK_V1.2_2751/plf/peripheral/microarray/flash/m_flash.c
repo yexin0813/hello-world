@@ -366,14 +366,14 @@ uint8_t eflash_write(uint32_t flashaddr, uint32_t datalen, uint32_t *bufaddr)
     
     
     
-    ret = flash_erase(get_page_addr(flashaddr),Sector_Erase);
+    //ret = flash_erase(get_page_addr(flashaddr),Sector_Erase);
     
 	
-	if (ret != FLASH_COMPLETE){
+	//if (ret != FLASH_COMPLETE){
         
-        debugPrint("Flash erase error in eflash_write!\n");
-		return ret;
-	}
+  //      debugPrint("Flash erase error in eflash_write!\n");
+	//	return ret;
+	//}
 
     
 
@@ -488,7 +488,7 @@ uint8_t eflash_program (uint32_t addr, uint32_t data)
 uint8_t eflash_bulk_program(uint32_t addr, uint32_t num_words, uint32_t *data_buf)
 {
 
-	uint8_t   ret = FLASH_ERROR_PG; 
+		uint8_t   ret = FLASH_ERROR_PG; 
     uint32_t  write_addr = 0x00;
     uint32_t  *buf_ptr = (void *)0;
     uint32_t  len = 0x00;
@@ -550,11 +550,11 @@ static uint32_t  get_page_addr(uint32_t addr)
     
     uint32_t which_page = 0x0000;
 
-    which_page = addr - EFM0_MAIN_BASEADDR;
+    which_page = addr - KEY_MAIN_BASEADDR;
 
     which_page = which_page / EFLASH_PAGESIZE;
 
-    return (EFM0_MAIN_BASEADDR+(which_page*EFLASH_PAGESIZE));
+    return (KEY_MAIN_BASEADDR+(which_page*EFLASH_PAGESIZE));
     
 }
 

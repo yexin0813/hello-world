@@ -152,7 +152,7 @@ uint8_t flash_program(uint32_t offset, uint32_t length, uint8_t *buffer)
     {
         uint32_t tailing_length = offset_base+FLASH_PAGE_SIZE-offset;
         uint32_t prog_length = length<tailing_length? length : tailing_length;
-        flash_program_base(offset,prog_length,buffer);
+        flash_program_base(offset,prog_length,buffer);     
         buffer += prog_length;
         offset += prog_length;
         length -= prog_length;
@@ -203,7 +203,8 @@ void flash_multi_read(uint32_t offset, uint32_t length, uint8_t * buffer,uint8_t
     case Dual_IO_Read_Mode:
         param.cmd = FLASH_DUAL_IO_FAST_READ;
         param.trans_type = Instruction_Standard_Address_Specific;
-        param.wait_cycles = 0;
+        param.wait_cycles = 0;
+
         param.dual_quad = Dual_SPI_Format;
     break;
     case Quad_IO_Read_Mode:

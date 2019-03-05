@@ -42,7 +42,14 @@
 #include "string.h"
 #include "plf.h"
 
+
+#include "Hardware.h"
 #include "common_lock_speaker.h"
+#include "common_lock_mfrc.h"
+#include "common_lock_oled.h"
+#include "common_lock_led.h"
+#include "common_lock_bs81x.h"
+#include "common_lock_sensor3403.h"
 
 
 
@@ -366,6 +373,7 @@ void test_task(void *params)
     int32_t newest_adc_value = 0;
     int32_t diff_times = 0;
     int32_t i = 0;
+	  uint32_t cnt;
     
     //io_cfg_output(23);
    // io_pin_clear(23);
@@ -373,11 +381,17 @@ void test_task(void *params)
     timerInit();
 
 	  hardwareInit();
+	  HardwareInputInit();
     
 	  //initDeviceInfo();
     
-    uartInit(UART_BAUDRATE_115200);
+    uartInit(UART_BAUDRATE_57600);
 	  Com_Lock_Init_Speaker();
+	  Com_Lock_Init_Mfrc();
+	  //Com_Lock_Init_OLED();
+	  Com_Lock_Init_LED();
+		Com_Lock_Init_Sensor();
+		Com_Lock_Init_bs81x();
 
 
     //fsmInit();
@@ -442,7 +456,7 @@ void test_task(void *params)
             
             //debugPrint("ADC 0:%d\n\r",app_adc_gpadc_single_end(0));
             vTaskDelay(1);
-        }
+        } 
 
           
         debugPrint("diff_times:%d\n\r",diff_times);
@@ -466,9 +480,15 @@ void test_task(void *params)
 
            //debugPrint("system tick:%d\n\r",systemTick());
           //vTaskDelay(10);
-					taskENTER_CRITICAL();
-					Com_Lock_Play_Voice(11);
-					taskEXIT_CRITICAL();
+					//taskENTER_CRITICAL();
+					//Com_Lock_Play_Voice(11);
+					//for(cnt = 0;cnt <13;cnt++)
+					//{
+					//	Com_Lock_Switch_Off_LED(COMMON_LOCK_LED_ALL_KEY_OFF_INDEX);
+					//	Com_Lock_Switch_On_LED(cnt);
+					//}
+					//Com_Lock_bs81x_Task();
+					//taskEXIT_CRITICAL();
             
         }
     
@@ -575,13 +595,18 @@ void app_task(void *parameter)
 			 //{
 				//		uart0SendBuff((uint8_t *)&ch,4);
 			 //}
-        taskENTER_CRITICAL();
-        io_pin_clear(RED_LED);
-			  timerDelayMs(1);
+        //taskENTER_CRITICAL();
+        //io_pin_clear(RED_LED);
+			  //timerDelayMs(1);
         //vTaskDelay(20);
-        io_pin_set(RED_LED);
-        timerDelayMs(1);
-			  taskEXIT_CRITICAL();
+        //io_pin_set(RED_LED);
+        //timerDelayMs(1);
+				//Com_Lock_Oled_Task();   
+			  //Com_Lock_Mfrc_Task();
+			  //Com_Lock_Sensor_Task();
+			  //taskEXIT_CRITICAL();
+			  //timerDelayMs(1000);
+			  //printRFID(); 
 
         
         //io_pin_clear(RED_LED);
@@ -600,6 +625,7 @@ void app_task(void *parameter)
 
         app_pwm_start(&pwm0.inst);
         vTaskDelay(20);*/
+				FrontTask();
         
     }
 }

@@ -31,11 +31,11 @@ app_uart_inst_t communication_uart1 = UART_INSTANCE(1);
 /*
  * Define a data structure for Tx and Rx data of uart1
  */
-USARTypDef	uart_tag ;
+volatile USARTypDef	uart_tag ;
 /*
  * Define a data structure for Tx and Rx data of uart0
  */
-USARTypDef	uart_tag0 ;
+volatile USARTypDef	uart_tag0 ;
 
 /*
  * For uart1 rx isr store the rx character
@@ -54,7 +54,8 @@ static uint8_t debugPrint_buf[256] = {0x00};
 
 
 
-static void dummy_func(void *dummy,uint8_t status);
+static void dummy_func0(void *dummy,uint8_t status);
+static void dummy_func1(void *dummy,uint8_t status);
 
 
 
@@ -98,7 +99,7 @@ void init_uart0(const uint32_t baudrate)
 	
 	  memset((uint8_t *)&uart_tag0,0,sizeof(USARTypDef));
     uart_tag0.rx_stat = RX_BUF_E;
-
+    uart_tag0.tx_done = 1;
     
 
     app_uart_read(&debugPrint_uart0.inst,&uart0_rx_data,1,uart00_rx_callback,NULL);
@@ -153,6 +154,7 @@ void uartInit(uint32_t baudrate)
 
     memset((uint8_t *)&uart_tag,0,sizeof(USARTypDef));
     uart_tag.rx_stat = RX_BUF_E;
+	  uart_tag.tx_done = 1;
 
     
 
@@ -264,13 +266,23 @@ uint8_t   uart0ReadByte(int32_t *ch)
  */
 void uartSendBuff(uint8_t *dat, uint32_t len)
 {
-    app_uart_write(&communication_uart1.inst,dat,len,dummy_func,NULL);
+	 while(uart_tag.tx_done == 0)
+	 {
+	 }
+    app_uart_write(&communication_uart1.inst,dat,len,dummy_func1,NULL);
+	  uart_tag.tx_done = 0;
 }
+
 
 
 void uart0SendBuff(uint8_t *dat, uint32_t len)
 {
-    app_uart_write(&debugPrint_uart0.inst,dat,len,dummy_func,NULL);
+		while(uart_tag0.tx_done == 0)
+		{
+			
+		}
+    app_uart_write(&debugPrint_uart0.inst,dat,len,dummy_func0,NULL);
+	  uart_tag0.tx_done = 0;
 }
 
 
@@ -300,10 +312,6 @@ int32_t  uart0SendBuffEmpty(void)
         return 1;
     else
         return 0;
-
-    
-
-
 }
 
 
@@ -312,10 +320,22 @@ int32_t  uart0SendBuffEmpty(void)
  * For app_uart_write function obey the BlueX soft architecture.
  *
  */
-static void dummy_func(void *dummy,uint8_t status)
+static void dummy_func0(void *dummy,uint8_t status)
 {
     volatile uint32_t dummy_value = 0x00;
-    (void)0;
+    uart_tag0.tx_done = 1;
+}
+
+
+/*
+ * Do Nothing.
+ * For app_uart_write function obey the BlueX soft architecture.
+ *
+ */
+static void dummy_func1(void *dummy,uint8_t status)
+{
+    volatile uint32_t dummy_value = 0x00;
+    uart_tag.tx_done = 1;
 }
 
 
@@ -328,15 +348,18 @@ static void dummy_func(void *dummy,uint8_t status)
 void debugPrint(const char *fmt, ...)
 {
 	int32_t ret;
-
+	while(uart_tag0.tx_done == 0)
+	{
+	}
 	va_list args;
 	va_start(args, fmt);
 	ret = vsprintf((char *)debugPrint_buf, fmt, args);
 	va_end(args);
 
-    
-    app_uart_write(&debugPrint_uart0.inst,debugPrint_buf,ret,dummy_func,NULL);
-    timerDelayMs(5);
+
+    app_uart_write(&debugPrint_uart0.inst,debugPrint_buf,ret,dummy_func0,NULL);
+		uart_tag0.tx_done = 0;
+   // timerDelayMs(5);
 }
 
 

@@ -26,7 +26,13 @@
  * the last 8K bytes for the BLE parameters, so only (0x00080000 + 512K - 8K)
  * for store the fingerprint data.
  */
-#define EFM0_MAIN_BASEADDR		(0x00800000UL)   /* 5 Fingers */
+#define EFM0_MAIN_BASEADDR  (0x00800000UL)
+#define KEY_MAIN_BASEADDR		(0x00860000UL)   /*KEY*/
+#define RFID_MAIN_BASEADDR	(0x00861000UL)   /*RFID*/
+#define FING_MAIN_BASEADDR	(0x00862000UL)   /*FINGER*/
+#define ADMIN_BASEADDR      (0x00863000UL)   /*Admin*/
+
+
 //#define EFM1_MAIN_BASEADDR		(0x008C1000UL)   /* 3 Fingers */
 
 

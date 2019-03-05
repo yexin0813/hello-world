@@ -31,7 +31,8 @@ typedef struct
 	uint8_t	    rx_buf[USART_REC_LEN];        
 	uint16_t	rx_seek;                 
 	uint16_t	rx_size;                 
-	uint8_t	    rx_stat;                     
+	uint8_t	    rx_stat;    
+  uint8_t   tx_done;	
 }USARTypDef;
 
 
